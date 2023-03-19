@@ -4,7 +4,7 @@ using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main() {
-	
+	/*
 unsigned god,mesec,dana;
 cout<<"Unesite godinu i mesec:"<<endl;
 cin>>god>>mesec;
@@ -22,4 +22,21 @@ default:
 	cout<<"30 dana.";
 }
 	return 0;
+*/
+
+  char ch='A';
+    
+     do
+	 {  if(ch=='C'){
+		     ch++;
+			break;
+	 
+	 }
+        cout<< ch<<endl;
+        ch++;
+	
+    }
+    while (ch<='Z');
+    cout<<endl;
+    return 0;
 }
