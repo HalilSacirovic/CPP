@@ -128,8 +128,6 @@ int main(){
 }
 
 
-*/
-
 
 
 class Stack{
@@ -226,6 +224,98 @@ int main(){
 	}
 	
 }
+
+
+
+*/
+
+
+class Fibonaci{
+public:
+	int n;
+	long *niz;
+	public:
+		Fibonaci(){
+			n=10;
+			Postavi();
+		}
+		
+		Fibonaci(int n){
+			this->n = n;
+			Postavi();
+		}
+		
+		Fibonaci(const Fibonaci &f){
+			n=f.n;
+			for(int i=0;i<n;i++){
+				niz[i] = f[i];
+			}
+		}
+	
+		long suma(){
+			long s = 0;
+			
+			for(int i =0; i<n;i++){
+				s += niz[i];
+				
+			}
+			return s;
+		}
+		
+		
+		long Vrednost (int i){
+			if(i<n && i >-1){
+				return niz[i];
+			}
+			
+			cout<<" Ne postoji na " << i << "mestu"<< endl;
+			return 0;
+		}
+		
+		void Prosiri(int x ){
+			n=x;
+			delete[] niz;
+			Postavi();
+		}
+		
+		void Ispis(){
+			cout<< "Prvih "<< n << "elemenata fibonacijevog niza su:"<< endl;
+			
+			for(int i = 0 ; i<n;i++){
+				cout<< niz[i]<< " ";
+				cout<< endl;
+				
+			}
+		}
+		
+		~Fibonaci(){
+			delete[] niz;
+		}
+	private:
+		void Postavi(){
+			niz= new long[n];
+			niz[0]=1;
+			niz[1]=1;
+			for(int i=2;i<n;i++){
+				niz[i]=niz[i-1]+niz[i-2];
+			}
+			
+		}
+};
+
+
+int main(){
+	Fibonaci  f1,f2(10);
+	
+	cout<< " Suma elementata fibonacijevog niza iznosi " << f1.suma()<<endl;
+	f1.Prosiri(15);
+	Fibonaci f3 = f1;
+	f3.Ispis();
+	f1.Ispis();
+	f2.Ispis();
+}
+
+
 
 
 
