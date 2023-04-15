@@ -356,7 +356,58 @@ void main(){
 */
 
 
+#include<iostream.h>
+#include<string.h>
+/**
+ * unutar metode adresa objekta koji je pozvao  je dostupna preko  kljucne reci this
+ * this- adresa ojekta koji je pozvao metodu
+ * *this-sam objekat
+ **/
 
+/*
+	Realizovati klasu Automobil sa javnim atributima rezervoar i potrosnja
+	Metode: inicijalizacija(gorivo,potrosnja),predji(km) koja pokrece automobil i prelazi km kilometara, pri cemu se smanjuje nivo gorivo u zavinosti od potrosnje i predjenih km
+	ispis() ispisuje podatke o Automobilu;adresa() ispisuje adresu objekta koji je pozvao ovu metodu
+*/
+class Automobil
+{
+public:
+	int rezervoar;
+    int	potrosnja;
+public:
+	void inic(int gorivo,int p);          //prototip metor=de za inicijalizaciju podataka o studentu
+	void predji(int km);                  //prototip metode za pokretanje automobila za km kilometara i praznjenje rezervoara
+	void ispis();                         //prototip metode za ispis  podataka
+	void adresa();                        //prototip f-je za vracanje adrese objekta koji je pozvao metodu
+	
+} ;
+/**
+ * Definicije metoda ciji su prototipovi navedeni u f-ji
+ * povratni_tip ime_klase::ime_metode(tip1 arg1,tip2 agr2,..){ naredbe;}
+ *
+void Automobil::adresa(){ 
+	cout<<this<<endl;
+	}
+//pristup podacima klase preko objekta *this 
+void Automobil::inic(int gorivo,int p){
+	
+    rezervoar=gorivo;
+	potrosnja=p;
+}
+void Automobil::predji(int km){
+    rezervoar-=potrosnja*km;
+}
+void Automobil::ispis(){
+	cout<<rezervoar<<" l goriva, potrosnja= "<<potrosnja<<"l/km "<<endl;
+}
+void main(){
+  Automobil dzip;
+  dzip.inic(20,9);
+  cout<<"Objekat dzip se nalazi na adresi "<<&dzip<<endl;
+  cout<<"Ovo ptvrdjuje i nasa metoda adresa :";
+  dzip.adresa();
+}
+*/
 
 
 
