@@ -227,8 +227,6 @@ int main(){
 
 
 
-*/
-
 
 class Fibonaci{
 public:
@@ -315,6 +313,47 @@ int main(){
 	f2.Ispis();
 }
 
+
+#include<iostream.h>
+#include<string.h>
+
+/*
+	Realizovati klasu Student koja ima privatne atribute ime,prezime i broj indeksa.
+	Metode: inicijalizacija(char* i,char* p,int b) postavlja vrednosti atribute na vrednosti koje dolazi kao argumenti i ispis koja ispisuje vrednosti atributa.
+
+
+class Student
+{
+	char ime[10];
+	char prezime[20];
+    int	br_indeksa;
+public:
+	void inic(char* i,char* p,int b);          //prototip metor=de za inicijalizaciju podataka o studentu
+	void ispis();                                       //protip f-je za ispis  podataka
+} ;
+/**
+ * Definicije metoda ciji su prototipovi navedeni u f-ji
+ * povratni_tip ime_klase::ime_metode(tip1 arg1,tip2 agr2,..){ naredbe;}
+ *
+
+void Student::inic(char* i,char* p,int b){
+   strcpy(ime,i); //f-ja iz biblioteke string.h koja kopira string i u string ime
+   strcpy(prezime,p);
+   br_indeksa=b;
+}
+void Student::ispis(){
+	cout<<ime<<" "<<prezime<<" "<<br_indeksa<<endl;
+}
+
+void main(){
+  Student informaticar;
+  informaticar.inic("Miki","Maus",9);
+  informaticar.ispis();
+
+}
+
+
+*/
 
 
 
