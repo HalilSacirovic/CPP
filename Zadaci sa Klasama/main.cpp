@@ -356,8 +356,6 @@ void main(){
 */
 
 
-#include<iostream.h>
-#include<string.h>
 /**
  * unutar metode adresa objekta koji je pozvao  je dostupna preko  kljucne reci this
  * this- adresa ojekta koji je pozvao metodu
@@ -369,6 +367,7 @@ void main(){
 	Metode: inicijalizacija(gorivo,potrosnja),predji(km) koja pokrece automobil i prelazi km kilometara, pri cemu se smanjuje nivo gorivo u zavinosti od potrosnje i predjenih km
 	ispis() ispisuje podatke o Automobilu;adresa() ispisuje adresu objekta koji je pozvao ovu metodu
 */
+/*
 class Automobil
 {
 public:
@@ -381,7 +380,7 @@ public:
 	void adresa();                        //prototip f-je za vracanje adrese objekta koji je pozvao metodu
 	
 } ;
-/**
+*
  * Definicije metoda ciji su prototipovi navedeni u f-ji
  * povratni_tip ime_klase::ime_metode(tip1 arg1,tip2 agr2,..){ naredbe;}
  *
@@ -408,6 +407,102 @@ void main(){
   dzip.adresa();
 }
 */
+
+
+main() {
+//	int a,b,c;
+//	cout<<"Unesite a i b"<<endl;
+//	cin>>a>>b;
+//	c=a+b;
+//	cout<<"Zbir brojeva a i b iznosi "<<c<<endl;
+	
+	
+//	int a,b,c;
+//	a=5;
+//	b=5;
+//	cout<<"a = "<<a<<"\n"<<"b= "<<b<<endl;
+//	c=a+b;
+//	cout<<"Zbir a+b iznosi c="<<a<<"+"<<b<<"=>"<<c<<endl;
+
+
+//	int a,b,c;
+//	
+//	cout<<"Unesite vrednosti za a i b"<<endl;
+//	
+//	cin>>a>>b;
+//
+//	(a>5)?c=a+b:c=a-b;
+//	
+//	cout<<"a= " <<a<<"b= " <<b<<"c= " <<c<<endl;
+//	
+
+//	int i1=18,i2=(12),i3(7),i4(9);
+//	
+//	cout<<i1<<" "<<i2<<" "<<i3<<" "<<i4<<endl;
+//	
+//
+//	cout<<"\n i1+i2 = "<<i1<<" "<<i2<<" "<<(i1+i2)<<endl;
+//	
+//	cout<<"\n i1-i2 = "<<i1 <<" "<<i2<<" "<<(i1-i2 )<<endl;
+//	
+//	cout<<"\n -i1/i3 = "<<i1 <<" "<<i3<<" "<<(-i1/i3)<<endl;
+//	
+//	cout<<"\n i1% - i3 = "<<i1 <<" "<<i3<<" "<<(i1% - i3)<<endl;
+//	
+//	cout<<"\n i1* ++ i3 = "<<i1 <<" "<<i3<<" "<<(i1* ++ i3)<<endl;
+//	
+//	cout<<"\n i2*i4++ = "<<i2 <<" "<<i4<<" "<<(i2*i4++)<<endl;
+//	
+//	cout<<"\n i2*i3++ = "<<i2<<" "<<i3<<" "<<(i2*i3++)<<endl;
+//	
+//	cout<<"\n i3*i4 = "<<i3 <<" "<<i4<<" "<<(i3*i4)<<endl;
+
+
+// 1.
+//
+//	int a,b;
+//	
+//	cout<<"Unesite a i b"<<endl;
+//	
+//	cin>>a>>b;
+//	
+//	cout<<"a+b ="<< a+b<<"\na-b ="<< a-b<<"\na*b ="<< a*b<<"\na/b ="<< a/b<<"\na%b ="<< a%b<<endl;
+
+
+// 2.
+	
+	const int Cena_Po_Satu = 44;
+	int delovi,sati,rad,ukupno;
+	
+	cout<<"Unesite cenu delova :";
+	cin>>delovi;
+	cout<<endl;
+	
+	
+	cout<<"Unesite broj potrosenih sati:";
+	cin>>sati;
+	cout<<endl;
+	
+	rad = Cena_Po_Satu  * sati ;
+	
+	ukupno = rad+delovi;
+	
+	cout<<"Cena delova iznosi: "<<delovi<<"\n Ukupno je potroseno sati : "<<sati<<"\nCena radova iznosi:"<<rad<<"\nCena po satu iznosi:"<<Cena_Po_Satu<<"\nUkupan iznos je: "<< ukupno<<endl;
+	
+	
+	
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
 
 
 
