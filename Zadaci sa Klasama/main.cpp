@@ -471,28 +471,96 @@ main() {
 
 // 2.
 	
-	const int Cena_Po_Satu = 44;
-	int delovi,sati,rad,ukupno;
-	
-	cout<<"Unesite cenu delova :";
-	cin>>delovi;
-	cout<<endl;
-	
-	
-	cout<<"Unesite broj potrosenih sati:";
-	cin>>sati;
-	cout<<endl;
-	
-	rad = Cena_Po_Satu  * sati ;
-	
-	ukupno = rad+delovi;
-	
-	cout<<"Cena delova iznosi: "<<delovi<<"\n Ukupno je potroseno sati : "<<sati<<"\nCena radova iznosi:"<<rad<<"\nCena po satu iznosi:"<<Cena_Po_Satu<<"\nUkupan iznos je: "<< ukupno<<endl;
-	
-	
+//	const int Cena_Po_Satu = 44;
+//	int delovi,sati,rad,ukupno;
+//	
+//	cout<<"Unesite cenu delova :";
+//	cin>>delovi;
+//	cout<<endl;
+//	
+//	
+//	cout<<"Unesite broj potrosenih sati:";
+//	cin>>sati;
+//	cout<<endl;
+//	
+//	rad = Cena_Po_Satu  * sati ;
+//	
+//	ukupno = rad+delovi;
+//	
+//	cout<<"Cena delova iznosi: "<<delovi<<"\n Ukupno je potroseno sati : "<<sati<<"\nCena radova iznosi:"<<rad<<"\nCena po satu iznosi:"<<Cena_Po_Satu<<"\nUkupan iznos je: "<< ukupno<<endl;
 	
 	
-	return 0;
+//	3.
+//	int god,m,d;
+//	
+//	cout<<"Unesite godinu i mesec:"<<endl;
+//	cin>>god>>m;
+//	
+//	cout<<"Uneti mesec ima u "<< god<<".godini";
+//	switch(m){
+//		case 1: case 3: case 5:case 7:case 8: case 10: case 12:
+//			cout<<"31 dan.";
+//			break;
+//		case 2:
+//			d= (god%4 == 0)?29:28;
+//				cout<<d<<"dana.";
+//			break;
+//		default:
+//			cout<<"30 dan.";
+//	}
+
+//  4.
+
+//	const double Stopa_Poreza = 0.0825;
+//	
+//	double nabavna_cena,porez,cena;
+//	
+//	
+//	cout<<"Unesite nabavnu cenu: ";
+//	cin>>nabavna_cena;
+//	cout<<endl;
+//	
+//	
+//	porez= nabavna_cena*Stopa_Poreza;
+//	cena = porez + nabavna_cena;
+//	
+//	cout<<"Porez na robu od : "<< nabavna_cena <<"din, iznosi: "<<porez<<endl;
+//	cout<<"Ukupna cena uracunata sa porezom iznosi: "<<cena<<endl;
+	
+	
+// 	5.
+
+
+	const double Stopa_Poreza = 0.0825;
+	
+	double cena_obroka,iznos_poreza,ukupno,dati_iznos,kusur;
+	
+	
+	cout<<"Stopa poreza iznosi: "<< Stopa_Poreza<<endl;
+	
+	cout<<"Unesite cenu obroka: ";
+	cin>> cena_obroka;
+	cout<< endl;
+	
+	cout<<"Unesite kolicinu novca koju zelite dati : ";
+	cin>>dati_iznos;
+	cout<< endl;
+	
+	
+	iznos_poreza= cena_obroka * Stopa_Poreza;
+	ukupno = iznos_poreza  + cena_obroka;
+	
+	kusur= dati_iznos - ukupno;
+	
+	cout<<"Iznos poreza na cenu obroka iznosi: "<<iznos_poreza<<"\nUkupna cena obroka iznosi: "<< ukupno<<endl;
+	
+	if(ukupno<dati_iznos){
+		cout<<"Kusur iznosi:"<<kusur<<endl;		
+	}else{
+		cout<<"Nedovoljno novca, dodajte jos:"<<kusur<<endl;
+	}
+	
+	return 0; 
 }
 
 
