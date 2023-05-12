@@ -531,35 +531,87 @@ main() {
 // 	5.
 
 
-	const double Stopa_Poreza = 0.0825;
+//	const double Stopa_Poreza = 0.0825;
+//	
+//	double cena_obroka,iznos_poreza,ukupno,dati_iznos,kusur;
+//	
+//	
+//	cout<<"Stopa poreza iznosi: "<< Stopa_Poreza<<endl;
+//	
+//	cout<<"Unesite cenu obroka: ";
+//	cin>> cena_obroka;
+//	cout<< endl;
+//	
+//	cout<<"Unesite kolicinu novca koju zelite dati : ";
+//	cin>>dati_iznos;
+//	cout<< endl;
+//	
+//	
+//	iznos_poreza= cena_obroka * Stopa_Poreza;
+//	ukupno = iznos_poreza  + cena_obroka;
+//	
+//	kusur= dati_iznos - ukupno;
+//	
+//	cout<<"Iznos poreza na cenu obroka iznosi: "<<iznos_poreza<<"\nUkupna cena obroka iznosi: "<< ukupno<<endl;
+//	
+//	if(ukupno<dati_iznos){
+//		cout<<"Kusur iznosi:"<<kusur<<endl;		
+//	}else{
+//		cout<<"Nedovoljno novca, dodajte jos:"<<kusur<<endl;
+//	}
 	
-	double cena_obroka,iznos_poreza,ukupno,dati_iznos,kusur;
+	
+	const double Prekovremeni_Rad = 1.5;
+	const double Regularni_Broj_Sati = 40.0;
+	
+	double radni_sati,satnica,regularna_plata,ukupna_plata,prekovremena_plata,sve_plate;
+	
+	int brojac_zaposlenih,sledeci_zaposleni;
 	
 	
-	cout<<"Stopa poreza iznosi: "<< Stopa_Poreza<<endl;
+	sve_plate = 0.00;
+	brojac_zaposlenih = 0;
 	
-	cout<<"Unesite cenu obroka: ";
-	cin>> cena_obroka;
-	cout<< endl;
+	do{
+		
+		cout<<"\nUnesite broj radnih sati:";
+		cin>>radni_sati;
+		cout<<endl;
+		
+		cout<<"Unesite cenu po satu:";
+		cin>>satnica;
+		cout<<endl;
+		
+		if(radni_sati > Regularni_Broj_Sati){
+			regularna_plata = radni_sati * satnica;
+			prekovremena_plata = (radni_sati - Regularni_Broj_Sati)*(Prekovremeni_Rad*satnica);
+		}else{
+			regularna_plata =radni_sati * satnica;
+			prekovremena_plata = 0.00;
+		}
+		
+		ukupna_plata = regularna_plata + prekovremena_plata;
+		
+		
+		
+		sve_plate += ukupna_plata;
+		brojac_zaposlenih++;
+		
+		cout<<"Regularna plata iznosi: "<<regularna_plata<<" eura"<<endl;
+		cout<<"Broj prekovremenih sati: "<<(radni_sati - Regularni_Broj_Sati)<<endl;
+		cout<<"Prekovremena satnica iznosi: "<<Prekovremeni_Rad*satnica<<endl;
+		cout<<"Prekovremena plata iznosi:"<<prekovremena_plata<<" eura"<<endl;
+		cout<<"Ukupna  plata iznosi:"<<ukupna_plata<<" eura"<<endl;
+		
+		cout<<"Unesite 1 ukoliko zelite da proverite sledeceg zaposlenog - 0 Ukoliko ne zelite: ";
+		cin>>sledeci_zaposleni;
+		
+	}while(sledeci_zaposleni);
 	
-	cout<<"Unesite kolicinu novca koju zelite dati : ";
-	cin>>dati_iznos;
-	cout<< endl;
+	cout<<"\nUkupan broj zaposlenih: "<<brojac_zaposlenih<<endl;
 	
-	
-	iznos_poreza= cena_obroka * Stopa_Poreza;
-	ukupno = iznos_poreza  + cena_obroka;
-	
-	kusur= dati_iznos - ukupno;
-	
-	cout<<"Iznos poreza na cenu obroka iznosi: "<<iznos_poreza<<"\nUkupna cena obroka iznosi: "<< ukupno<<endl;
-	
-	if(ukupno<dati_iznos){
-		cout<<"Kusur iznosi:"<<kusur<<endl;		
-	}else{
-		cout<<"Nedovoljno novca, dodajte jos:"<<kusur<<endl;
-	}
-	
+	cout<<"Ukupna plata za "<<brojac_zaposlenih<<" zaposlenika iznosi:"<<sve_plate<<" eura"<<endl;
+
 	return 0; 
 }
 
