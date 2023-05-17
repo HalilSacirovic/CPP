@@ -560,57 +560,62 @@ main() {
 //		cout<<"Nedovoljno novca, dodajte jos:"<<kusur<<endl;
 //	}
 	
-	
-	const double Prekovremeni_Rad = 1.5;
-	const double Regularni_Broj_Sati = 40.0;
-	
-	double radni_sati,satnica,regularna_plata,ukupna_plata,prekovremena_plata,sve_plate;
-	
-	int brojac_zaposlenih,sledeci_zaposleni;
-	
-	
-	sve_plate = 0.00;
-	brojac_zaposlenih = 0;
-	
-	do{
-		
-		cout<<"\nUnesite broj radnih sati:";
-		cin>>radni_sati;
-		cout<<endl;
-		
-		cout<<"Unesite cenu po satu:";
-		cin>>satnica;
-		cout<<endl;
-		
-		if(radni_sati > Regularni_Broj_Sati){
-			regularna_plata = radni_sati * satnica;
-			prekovremena_plata = (radni_sati - Regularni_Broj_Sati)*(Prekovremeni_Rad*satnica);
-		}else{
-			regularna_plata =radni_sati * satnica;
-			prekovremena_plata = 0.00;
-		}
-		
-		ukupna_plata = regularna_plata + prekovremena_plata;
-		
-		
-		
-		sve_plate += ukupna_plata;
-		brojac_zaposlenih++;
-		
-		cout<<"Regularna plata iznosi: "<<regularna_plata<<" eura"<<endl;
-		cout<<"Broj prekovremenih sati: "<<(radni_sati - Regularni_Broj_Sati)<<endl;
-		cout<<"Prekovremena satnica iznosi: "<<Prekovremeni_Rad*satnica<<endl;
-		cout<<"Prekovremena plata iznosi:"<<prekovremena_plata<<" eura"<<endl;
-		cout<<"Ukupna  plata iznosi:"<<ukupna_plata<<" eura"<<endl;
-		
-		cout<<"Unesite 1 ukoliko zelite da proverite sledeceg zaposlenog - 0 Ukoliko ne zelite: ";
-		cin>>sledeci_zaposleni;
-		
-	}while(sledeci_zaposleni);
-	
-	cout<<"\nUkupan broj zaposlenih: "<<brojac_zaposlenih<<endl;
-	
-	cout<<"Ukupna plata za "<<brojac_zaposlenih<<" zaposlenika iznosi:"<<sve_plate<<" eura"<<endl;
+
+//	6.
+//	
+//	const double Prekovremeni_Rad = 1.5;
+//	const double Regularni_Broj_Sati = 40.0;
+//	
+//	double radni_sati,satnica,regularna_plata,ukupna_plata,prekovremena_plata,sve_plate;
+//	
+//	int brojac_zaposlenih,sledeci_zaposleni;
+//	
+//	
+//	sve_plate = 0.00;
+//	brojac_zaposlenih = 0;
+//	
+//	do{
+//		
+//		cout<<"\nUnesite broj radnih sati:";
+//		cin>>radni_sati;
+//		cout<<endl;
+//		
+//		cout<<"Unesite cenu po satu:";
+//		cin>>satnica;
+//		cout<<endl;
+//		
+//		if(radni_sati > Regularni_Broj_Sati){
+//			regularna_plata = radni_sati * satnica;
+//			prekovremena_plata = (radni_sati - Regularni_Broj_Sati)*(Prekovremeni_Rad*satnica);
+//		}else{
+//			regularna_plata =radni_sati * satnica;
+//			prekovremena_plata = 0.00;
+//		}
+//		
+//		ukupna_plata = regularna_plata + prekovremena_plata;
+//		
+//		
+//		
+//		sve_plate += ukupna_plata;
+//		brojac_zaposlenih++;
+//		
+//		cout<<"Regularna plata iznosi: "<<regularna_plata<<" eura"<<endl;
+//		cout<<"Broj prekovremenih sati: "<<(radni_sati - Regularni_Broj_Sati)<<endl;
+//		cout<<"Prekovremena satnica iznosi: "<<Prekovremeni_Rad*satnica<<endl;
+//		cout<<"Prekovremena plata iznosi:"<<prekovremena_plata<<" eura"<<endl;
+//		cout<<"Ukupna  plata iznosi:"<<ukupna_plata<<" eura"<<endl;
+//		
+//		cout<<"Unesite 1 ukoliko zelite da proverite sledeceg zaposlenog - 0 Ukoliko ne zelite: ";
+//		cin>>sledeci_zaposleni;
+//		
+//	}while(sledeci_zaposleni);
+//	
+//	cout<<"\nUkupan broj zaposlenih: "<<brojac_zaposlenih<<endl;
+//	
+//	cout<<"Ukupna plata za "<<brojac_zaposlenih<<" zaposlenika iznosi:"<<sve_plate<<" eura"<<endl;
+
+
+
 
 	return 0; 
 }
@@ -618,7 +623,30 @@ main() {
 
 
 
+//
+//		atributi
+//		metode
+//	class ime_klase
+//	{
+	//  //atribute
+	//  //prototipovi metoda
+//	}
+//		//metode
+//		operacije pripadnosti (::) – definišekojoj klasi pripada  metoda  
 
+
+////////////////////////////////////////////////////////////////////////////
+
+
+
+//		deklaracija objekta
+//		  ime_klase ime_objekta;
+//		mogu se navesti i odmah nakon definicije klase
+//		  class ime_klase{
+//		  } objekat1,objekat2;
+//		za obracanje vidljivim elementima koristi se operacija .
+//		objekat1.ime_atributa
+//		metode mogu pozivati elemente klase neposredno bez operatora 
 
 
 
