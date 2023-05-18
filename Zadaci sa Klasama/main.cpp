@@ -409,7 +409,7 @@ void main(){
 */
 
 
-main() {
+//main() {
 //	int a,b,c;
 //	cout<<"Unesite a i b"<<endl;
 //	cin>>a>>b;
@@ -617,7 +617,7 @@ main() {
 
 
 
-	return 0; 
+//	return 0; 
 }
 
 
@@ -650,6 +650,56 @@ main() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+class Tacka
+{
+	int x;
+	int y;
+public:
+	void inic(int a,int b);          //prototip metor=de za inicijalizaciju koordinata
+	void translacija(int dx,int dy); //prototip funkcije za translaciju
+	void pozicija();                 //protip f-je za ispis  pozicije
+} tacka1;
+/**
+ * Definicije metoda ciji su prototipovi navedeni u f-ji
+ * povratni_tip ime_klase::ime_metode(tip1 arg1,tip2 agr2,..){ naredbe;}
+ **/
+
+void Tacka::inic(int a,int b){
+   x=a;
+   y=b;
+}
+void Tacka::translacija(int dx, int dy){
+   x+=dx;
+   y+=dy;
+}
+void Tacka::pozicija(){
+  cout<<"(x,y)=("<<x<<","<<y<<")"<<endl;
+}
+
+main(){
+Tacka tacka2;
+tacka1.inic(1,20);
+tacka2.inic(5,5);
+cout<<"Tacka2";
+tacka1.pozicija();
+cout<<"Tacka1";
+tacka2.pozicija();
+tacka2.translacija(3,5);
+cout<<"Tacka2";
+tacka2.pozicija();
+
+}
 
 
 
