@@ -153,7 +153,6 @@ int main()
 	Metode: inicijalizacija(z1,z2),uvecaj() koja uvecava znakove tj dobijamo sledece karaktere u ASCII tabeli;
 	ispis() metoda koja ispisuje koji su trenutni znaci
 	adresaoObjekta() ispisuje adresu objekta koji je pozvao
-*/
 
 
 
@@ -212,4 +211,74 @@ int main()
 
     return 0;
 }
+
+*/
+
+
+/*
+   Realizovati klasu Trougao koja ima tri privatna atributa a,b i c (realne vrednosti)
+   i metode: inicijalizacija(a,b,c) postavlja vrednosti atributa na vrednosti argumenata;
+   pisi - metoda koja ispisuje podatke o atributima a,b i c;
+   P() - metoda koja racuna povrsinu trougla; O() racuna i vraca obim trougla;
+
+
+
+
+
+class Trougao{
+    float a;
+    float b;
+    float c;
+public:
+    void Inic(float a,float b, float c);
+    void Pisi();
+    float Pov();
+    double Obim();
+
+};
+
+void Trougao::Inic(float a,float b, float c){
+    this->a=a;
+    this->b=b;
+    this->c=c;
+}
+
+void Trougao::Pisi(){
+    cout<<"Duzina stranica su:"<<a<<" "<<b<<" "<<c<<endl;
+
+}
+
+
+float Trougao::Pov(){
+    float S=(a+b+c)/2;
+    return sqrt(S*(S-a)*(S-b)*(S-c));
+
+}
+
+
+double Trougao::Obim(){
+return a+b+c;
+
+}
+
+
+int main()
+{
+    Trougao t;
+
+    t.Inic(5.2,5.1,10.2);
+    t.Pisi();
+    cout<<"O="<<t.Obim()<<"\nP="<<t.Pov()<<endl;
+}
+
+*/
+
+////////////////////////////////////////////////////////////////////
+
+// KONSTRUKTOR  I DESTRUKTOR
+
+
+//////////////////////////////////////////////////////////////
+
+
 
