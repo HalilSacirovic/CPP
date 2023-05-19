@@ -281,4 +281,57 @@ int main()
 //////////////////////////////////////////////////////////////
 
 
+class Tacka
+{
+  int x;
+  int y;
+  public:
+      Tacka();
+      void Inic(int a,int b);
+      void Trans(int dx, int dy);
+      void Pozicija();
+}tacka1;
 
+Tacka::Tacka(){
+    x=0;
+    y=0;
+    cout<<"U telu smo konstruktor metode"<<endl;
+
+}
+
+
+void Tacka::Inic(int a, int b)
+{
+    this->x= a;
+    this->y= b;
+}
+
+void Tacka::Trans(int dx,int dy)
+{
+    x+=dx;
+    y+=dy;
+}
+
+void Tacka::Pozicija()
+{
+    cout<<"(x,y)"<<x<<" "<<y<<endl;
+}
+
+int main()
+{
+    Tacka tacka2;
+
+    cout<<"Tacka 2:";
+    tacka2.Pozicija();
+    tacka1.Inic(5,10);
+    tacka2.Inic(6,7);
+    cout<<"Tacka1:";
+    tacka1.Pozicija();
+    cout<<"Tacka2:";
+    tacka2.Pozicija();
+    tacka2.Trans(3,6);
+    cout<<"Tacka2:";
+    tacka2.Pozicija();
+
+
+}
