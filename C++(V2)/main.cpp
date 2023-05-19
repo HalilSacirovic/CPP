@@ -279,7 +279,7 @@ int main()
 
 
 //////////////////////////////////////////////////////////////
-
+/*
 
 class Tacka
 {
@@ -335,3 +335,61 @@ int main()
 
 
 }
+*/
+
+
+class Tacka
+{
+    int x,y;
+public:
+    Tacka();
+    Tacka(int a,int b);
+    void Translacija(int dx,int dy);
+    void Pozicija();\
+    ~Tacka();
+};
+
+Tacka::Tacka()
+{
+    x=0;
+    y=0;
+    cout<<"U telu smo konstruktora i na adresi smo:"<<this<<endl;
+}
+
+Tacka::Tacka(int a ,int b=0 )
+{
+    x=a;
+    y=b;
+}
+void Tacka::Translacija(int dx , int dy)
+{
+    x+=dx;
+    y+=dy;
+}
+
+void Tacka::Pozicija()
+{
+    cout<<"(x,y)"<<x<<","<<y<<endl;
+}
+
+Tacka::~Tacka(){
+    cout<<"Desturuktor metoda koja uklanja objekat sa pozicije:"<<this<<endl;
+}
+
+int main()
+{
+    Tacka tacka1= Tacka(5,5);
+    Tacka tacka2(1,20);
+    Tacka tacka3(7);
+    Tacka tacka4;
+    cout<<"Tacka1:";
+    tacka1.Pozicija();
+    cout<<"Tacka2:";
+    tacka2.Pozicija();
+    cout<<"Tacka3:";
+    tacka3.Pozicija();
+    cout<<"Tacka4:";
+    tacka4.Pozicija();
+
+}
+
