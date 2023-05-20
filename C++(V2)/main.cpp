@@ -336,6 +336,7 @@ int main()
 
 }
 */
+/*
 
 
 class Tacka
@@ -392,4 +393,59 @@ int main()
     tacka4.Pozicija();
 
 }
+
+*/
+
+
+class Clan
+{
+private:
+    int cbroj;
+    char imeprezime[30];
+    double stanje;
+    int pocasni;
+public:
+    Clan()
+    {
+        cbroj= 123;
+        strcpy(imeprezime,"Halil Saciroivc");
+        stanje = 5000;
+        pocasni = 0;
+    }
+
+    Clan(int cb,char *ip,double s,int p)
+    {
+        cbroj=cb;
+        strcpy(imeprezime,ip);
+        stanje =s;
+        pocasni=p;
+    }
+    void setCbroj(int cbr){cbroj=cbr;}
+    void setIP(char *ip){strcpy(imeprezime,ip);}
+    void setStanje(float stanje){ this->stanje = stanje; }
+    void setPocasni(int p){pocasni=p;}
+    int getCbroj(){return cbroj;}
+    char* getIP(){return imeprezime;}
+    double getStanje(){return stanje;}
+    int getPocasni(){return pocasni;}
+
+    void naplata()
+    {
+        if(!pocasni)
+        {
+            stanje -=500;
+        }
+    }
+
+};
+
+int main()
+{
+    Clan c;
+    c.setCbroj(5);
+    c.naplata();
+    cout<<"Stanje clana nakon naplate je:"<<c.getStanje()<<endl;
+    return 0;
+}
+
 
