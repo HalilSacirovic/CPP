@@ -394,7 +394,6 @@ int main()
 
 }
 
-*/
 
 
 class Clan
@@ -447,5 +446,164 @@ int main()
     cout<<"Stanje clana nakon naplate je:"<<c.getStanje()<<endl;
     return 0;
 }
+
+
+*/
+
+
+class Niz
+{
+public:
+    int *elementi;
+    int n;
+
+public:
+    Niz()
+    {
+        int i;
+        int n=10;
+        elementi = new int[n];
+        for(i=0;i<n;i++)
+        {
+            elementi[i]=0;
+        }
+        cout<<"Elementi:"<<elementi<<endl;
+        cout<<"Podrazumevani konstruktor koji pravi niz od 10 nula\n";
+    }
+    Niz(int broj_el)
+    {
+        n=broj_el;
+        elementi=new int[n];
+
+        cout<<"Elementi:"<<elementi<<endl;
+        cout<<"Konstruktor sa argumentima\n";
+    }
+
+    void ucitaj_elemente()
+    {
+        int i;
+        cout<<"Unesite "<<n<<"celobrojnih elemenata niza\n";
+        for(i=0;i<n;i++)
+        {
+            cin>>elementi[i];
+        }
+    }
+
+    Niz(const Niz& niz1)
+    {
+        int i;
+        n=niz1.n;
+        elementi = new int[n];
+        for(i=0;i<n;i++)
+        {
+            elementi[i]=niz1.elementi[i];
+            cout<<"Copy Konstruktor\n";
+
+        }
+
+    }
+    ~Niz()
+    {
+        delete [] elementi;
+        cout<<"Destruktor"<<endl;
+
+    }
+  int max(){
+			 int i,m=elementi[0];
+			  for(i=0;i<n;i++)
+			  if(elementi[i]>m)
+			  m=elementi[i];
+			 return m;
+
+
+		  }
+
+
+		  void ispisi(){
+			  int i;
+			  cout<<"Elementi niza su :";
+			  for(i=0;i<n;i++)
+			  cout<<elementi[i]<<" ";
+			  cout<<endl;}
+
+                   int sr_vr(){
+			  int i,s=0;
+			  for(i=0;i<n;i++){
+				  s+=elementi[i];
+			  }
+			  return s/n;
+		  }
+                   //n1(1,2,3,4)+ n2(4,5)= n3(5,7,3,4)
+                   //n3=n1.dodaj(n2)    n1(n,elementi)                                       //  n2(n2.n,n2.elementi[i])
+                   Niz  dodaj(const Niz& n2){
+
+                       Niz n3(n);
+                       int i;
+                       for(i=0;i<n;i++)
+                        n3.elementi[i]=elementi[i];
+                       for(i=0;i<n2.n;i++)
+                         n3.elementi[i]+=n2.elementi[i];
+
+
+                       return n3;
+
+                   }
+                   //n1(1,2,3,4), n2(4,5)= n3(1,2,3,4,4,5)
+                   //n3=n1.dopisi(n2)    n1(n,elementi)                                       //  n2(n2.n,n2.elementi[i])
+
+                    Niz  dopisi(const Niz& n2){
+                       Niz n3(n+n2.n);
+                       int i;
+                      for(i=0;i<n;i++)
+                         n3.elementi[i]=elementi[i];
+                       for(i=0;i<n2.n;i++)
+                         n3.elementi[n+i]=n2.elementi[i];
+                       return n3;
+
+                   }
+
+                   //Podniz niza koji sadrzi samo parne elemente
+                   //  n2 =n1.podnizpar();
+                   Niz podnizpar(){
+                       int i,k=0;
+                       for(i=0;i<n;i++)
+                           if(elementi[i]%2==0)
+                            k++;
+                       Niz n2(k);
+                       k=0;
+                       for(i=0;i<n;i++)
+                           if(elementi[i]%2==0){
+                            n2.elementi[k]=elementi[i];
+                            k++;}
+                       return n2;
+
+                   }
+
+
+		 };
+		 main()
+		 {
+
+		 int i,k,l(1);
+		 cin>>k;
+		 Niz n,n1(k);
+                 n1.ucitaj_elemente();
+		 Niz n2=n1;
+                 n2.elementi[0]=9;
+		 int max2=n2.max();
+		  int max1=n1.max();
+		  cout<<"Maksimalni element niza n1 je "<<max1<<endl;
+		 cout<<"Maksimalni element niza n2 je "<<max2<<endl;
+		 cout<<"Srednja vrednoist  elementa niza n2 je "<<n2.sr_vr()<<endl;
+		 n.ispisi();
+		 n1.ispisi();
+		 n2.ispisi();
+                 Niz n3=n1.dodaj(n2);
+                 n3.ispisi();
+                 Niz n4=n3.dopisi(n2);
+                 n4.ispisi();
+                 n1.dodaj(n2).ispisi();
+                 n3.dopisi(n2).ispisi();
+		 }
 
 
