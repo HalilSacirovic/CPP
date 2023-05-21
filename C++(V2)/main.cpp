@@ -448,7 +448,7 @@ int main()
 }
 
 
-*/
+
 
 
 class Niz
@@ -606,4 +606,65 @@ public:
                  n3.dopisi(n2).ispisi();
 		 }
 
+*/
+#include <iostream>
+#include <string>
+using namespace std;
 
+class Bankovni_Racun {
+    string broj_racuna;
+    double stanje_na_racunu;
+    double kamatna_stopa;
+
+public:
+    double Stanje(double st);
+    string Racun(string br);
+    double Kamata(double ks);
+    Bankovni_Racun(string br, double sr, double ks);
+    double Izracunaj_Kamatu();
+};
+
+Bankovni_Racun::Bankovni_Racun(string br, double sr, double ks) {
+    broj_racuna = br;
+    stanje_na_racunu = sr;
+    kamatna_stopa = ks;
+}
+
+double Bankovni_Racun::Izracunaj_Kamatu() {
+    return kamatna_stopa * stanje_na_racunu;
+}
+
+double Bankovni_Racun::Stanje(double st) {
+    stanje_na_racunu = st;
+    return stanje_na_racunu;
+}
+
+string Bankovni_Racun::Racun(string br) {
+    broj_racuna = br;
+    return broj_racuna;
+}
+
+double Bankovni_Racun::Kamata(double ks) {
+    kamatna_stopa = ks;
+    return kamatna_stopa;
+}
+
+int main() {
+    string br;
+    double sr, ks;
+
+    cout << "\nUnesite broj racuna: ";
+    cin >> br;
+
+    cout << "\nUnesite stanje na racunu: ";
+    cin >> sr;
+
+    cout << "\nUnesite kamatnu stopu: ";
+    cin >> ks;
+
+    Bankovni_Racun test(br, sr, ks);
+
+    cout << "Kamata iznosi: " << test.Izracunaj_Kamatu() << endl;
+
+    return 0;
+}
