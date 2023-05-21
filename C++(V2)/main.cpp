@@ -606,7 +606,6 @@ public:
                  n3.dopisi(n2).ispisi();
 		 }
 
-*/
 #include <iostream>
 #include <string>
 using namespace std;
@@ -668,3 +667,176 @@ int main() {
 
     return 0;
 }
+
+
+
+
+class Bankovni_Racun {
+    string broj_racuna;
+    double stanje_na_racunu;
+    double kamatna_stopa;
+
+
+public:
+    void Stanje(double st);
+    void Racun(string br);
+    void Kamata(double ks);
+    Bankovni_Racun(); // Dodan konstruktor bez argumenata
+    double Izracunaj_Kamatu();
+};
+
+Bankovni_Racun::Bankovni_Racun() {
+    broj_racuna = "";
+    stanje_na_racunu = 0.0;
+    kamatna_stopa = 0.0;
+}
+
+double Bankovni_Racun::Izracunaj_Kamatu() {
+    return kamatna_stopa * stanje_na_racunu;
+}
+
+void Bankovni_Racun::Stanje(double st) {
+    stanje_na_racunu = st;
+    cout<<stanje_na_racunu<<endl;
+
+}
+
+void Bankovni_Racun::Racun(string br) {
+    broj_racuna = br;
+    cout<<broj_racuna<<endl;
+}
+
+void Bankovni_Racun::Kamata(double ks) {
+    kamatna_stopa = ks;
+    cout<<kamatna_stopa<<endl;
+
+}
+
+int main() {
+    Bankovni_Racun banka_racun;
+
+    cout << "\nUnesite broj racuna: ";
+    banka_racun.Racun("555333XD");
+
+    cout << "\nUnesite stanje na racunu: ";
+    banka_racun.Stanje(3562);
+
+    cout << "\nUnesite kamatnu stopu: ";
+    banka_racun.Kamata(0.08);
+
+
+
+    cout << "Kamata iznosi: " << banka_racun.Izracunaj_Kamatu() << endl;
+
+    return 0;
+}
+
+// SAD RADIIII KONTAMM
+*/
+
+
+
+#include <iostream>
+using namespace std;
+
+class Bankovni_Racun {
+    string broj_racuna;
+    double stanje_na_racunu;
+    double kamatna_stopa;
+    double kamata_test;
+    double sa_kamatom;
+
+
+public:
+    Bankovni_Racun(string br, double sr, double ks);
+    double Izracunaj_Kamatu();
+    double Prosledi_Stanje();
+    double Stanje_Sa_Kamatom();
+    string Prosledi_Broj_Racuna();
+    void Uplata(double);
+    bool Isplata(double);
+    void Pisi();
+};
+
+Bankovni_Racun::Bankovni_Racun(string br, double sr, double ks)
+{
+    broj_racuna = br;
+    stanje_na_racunu = sr;
+    kamatna_stopa = ks;
+}
+
+double Bankovni_Racun::Prosledi_Stanje()
+{
+    return stanje_na_racunu;
+}
+
+double Bankovni_Racun::Stanje_Sa_Kamatom()
+{
+    sa_kamatom = kamata_test + stanje_na_racunu;
+    return sa_kamatom;
+}
+string Bankovni_Racun::Prosledi_Broj_Racuna()
+{
+    return broj_racuna;
+}
+
+double Bankovni_Racun::Izracunaj_Kamatu()
+{
+    kamata_test = kamatna_stopa * stanje_na_racunu;
+    return kamata_test
+}
+
+void Bankovni_Racun::Uplata(double iznos)
+{
+    stanje_na_racunu += iznos;
+}
+
+bool Bankovni_Racun::Isplata(double iznos)
+{
+    bool dopusteno;
+    if (iznos <= stanje_na_racunu)
+    {
+        stanje_na_racunu -= iznos;
+        dopusteno = true;
+    }
+    else {
+        dopusteno = false;
+        cout << "Nedovoljno novca" << endl;
+    }
+    return dopusteno;
+}
+
+int main()
+{
+    Bankovni_Racun Racun1("15255", 2530, 0.34);
+
+    cout << "\nBroj racuna: ";
+    cout << Racun1.Prosledi_Broj_Racuna() << endl;
+
+    cout << "Stanje na racunu: ";
+    cout << Racun1.Prosledi_Stanje() << endl;
+
+    cout << "Izracunata kamata: ";
+    cout << Racun1.Izracunaj_Kamatu() << endl;
+
+     cout << "Stanje sa  kamatom: ";
+    cout << Racun1.Stanje_Sa_Kamatom() << endl;
+
+    cout << "Uplata na racun: ";
+    Racun1.Uplata(500);
+
+    cout << "Stanje na racunu posle uplate: ";
+    cout << Racun1.Prosledi_Stanje() << endl;
+
+    cout << "Isplata sa racuna: ";
+    Racun1.Isplata(1326);
+
+    cout << "Stanje na racunu posle isplate: ";
+    cout << Racun1.Prosledi_Stanje() << endl;
+
+    return 0;
+}
+
+
+
+// hmm
