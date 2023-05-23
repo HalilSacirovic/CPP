@@ -1204,7 +1204,6 @@ int main()
     t2.Pozicija();
 }
 
-*/
 
 
 class Tacka
@@ -1269,3 +1268,104 @@ int main()
     t4.Pozicija();
 
 }
+*/
+
+
+class Clan
+{
+private:
+    int cbroj;
+    char imeprezime[30];
+    double stanje;
+    int pocasni;
+public:
+    Clan()
+    {
+        cbroj=123;
+        strcpy(imeprezime,"Cazim  Kadric");
+        stanje = 6969;
+        pocasni= 0;
+    }
+
+    Clan(int cb,char* ip,double s,int p)
+    {
+        cbroj = cb;
+        strcpy(imeprezime,ip);
+        stanje = s;
+        pocasni = p;
+    }
+
+    void setCbroj(int cbr){cbroj = cbr;}
+    void setIP(char *ip){strcpy(imeprezime,ip);}
+    void setStanje(double s){stanje = s;}
+    void setPocasni(int p){ pocasni = p; }
+
+    int getCbroj(){return cbroj;}
+    char* getIP(){return imeprezime;}
+    double getStanje(){return stanje;}
+    int getPocasni(){ return pocasni; }
+
+
+    void Naplata()
+    {
+        if(pocasni = 0)
+        {
+            stanje -=500;
+        }else{
+            cout<<"Ovo je pocasni clan"<<endl;
+        }
+    }
+};
+
+int main()
+{
+    Clan c;
+    Clan c1;
+    Clan c2;
+
+    c.setCbroj(5);
+    c.setIP("Halil Sacirovic");
+    c.setStanje(3690);
+
+    c.setPocasni(5);
+    c.Naplata();
+
+    cout<<"Pocasni:"<<c.getPocasni()<<endl;
+
+    cout<<"Ime i prezime:"<<c.getIP()<<endl;
+
+
+    cout<<"Stanje clana nakon naplate je:"<<c.getStanje()<<endl;
+
+
+
+    c2.setIP("Mujo Sacirovic");
+    c2.setStanje(7650);
+
+    c2.setPocasni(5);
+    c2.Naplata();
+
+    cout<<"Pocasni:"<<c2.getPocasni()<<endl;
+
+    cout<<"Ime i prezime:"<<c2.getIP()<<endl;
+
+
+    cout<<"Stanje clana nakon naplate je:"<<c2.getStanje()<<endl;
+
+    c1.Naplata();
+
+    c1.setPocasni(5);
+    cout<<"Pocasni:"<<c1.getPocasni()<<endl;
+
+    cout<<"Ime i prezime:"<<c1.getIP()<<endl;
+    cout<<"Stanje clana nakon naplate je:"<<c1.getStanje()<<endl;
+}
+
+
+
+
+// I HAVE ONE BUG IDK WHY
+
+
+
+
