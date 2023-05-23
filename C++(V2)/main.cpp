@@ -732,7 +732,6 @@ int main() {
 }
 
 // SAD RADIIII KONTAMM
-*/
 
 
 
@@ -783,7 +782,7 @@ string Bankovni_Racun::Prosledi_Broj_Racuna()
 double Bankovni_Racun::Izracunaj_Kamatu()
 {
     kamata_test = kamatna_stopa * stanje_na_racunu;
-    return kamata_test
+    return kamata_test;
 }
 
 void Bankovni_Racun::Uplata(double iznos)
@@ -840,3 +839,77 @@ int main()
 
 
 // hmm
+
+
+class Tacka2
+{
+public:
+    int x;
+    int y;
+
+    Tacka2()
+    {
+        cout<<"Tacka2: Napravlje je objekat na adresi:"<<this<<endl;
+
+    }
+
+    Tacka2(int x,int y)
+    {
+        this->x=x;
+        this->y=y;
+        cout<<"Tacka2(argumenti):Napravlje je objekat na adresi:"<<this<<endl;
+        cout<<"X="<<this->x<<endl;
+        cout<<"Y="<<this->y<<endl;
+    }
+};
+
+class Tacka3
+{
+    int x;
+    int y;
+    int z;
+public:
+    Tacka3()
+    {
+
+        cout<<"Tacka3:Napravlje je objekat na adresi:"<<this<<endl;
+    }
+    Tacka3(int x,int y,int z)
+    {
+         this->x=x;
+        this->y=y;
+        this->z=z;
+        cout<<"Tacka3(argumenti):Napravlje je objekat na adresi:"<<this<<endl;
+         cout<<"X="<<this->x<<endl;
+        cout<<"Y="<<this->y<<endl;
+         cout<<"Z="<<this->z<<endl;
+
+    }
+
+    Tacka3(Tacka2 t, int z)
+    {
+        this->x=t.x;
+        this->y=t.y;
+        this->z=z;
+        cout<<"Tacka3(Tacka2,argument):Napravlje je objekat na adresi:"<<this<<endl;
+         cout<<"X="<<this->x<<endl;
+        cout<<"Y="<<this->y<<endl;
+         cout<<"Z="<<this->z<<endl;
+
+    }
+};
+
+
+int main()
+{
+    Tacka3 teme,teme1(1,2,3);
+    Tacka2 teme2(4,5);
+    Tacka3 teme3(teme2,6);
+}
+
+*/
+
+
+
+
+
