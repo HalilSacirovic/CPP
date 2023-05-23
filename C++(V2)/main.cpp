@@ -1095,7 +1095,7 @@ int main()
     dz.Uvecaj();
     dz.Ispis();
 }
-*/
+
 #include<math.h>
 
 
@@ -1145,4 +1145,127 @@ int main()
     t.Pisi();
     cout<<"Povrsina Iznosi:"<<t.Pov()<<endl;
     cout<<"Obim iznosi:"<<t.Obim()<<endl;
+}
+
+
+
+class Tacka
+{
+    int x;
+    int y;
+public:
+    Tacka();
+    void Inic(int a,int b);
+    void Trans(int dx,int dy);
+    void Pozicija();
+};
+
+Tacka::Tacka()
+{
+    x=0;
+    y=0;
+    cout<<"__Konstruktor__"<<endl;
+
+}
+
+void Tacka::Inic(int a,int b)
+{
+    x=a;
+    y=b;
+}
+void Tacka::Trans(int dx,int dy)
+{
+    x +=dx;
+    y +=dy;
+}
+
+void Tacka::Pozicija()
+{
+    cout<<"(x,y) =>"<<"("<<x<<","<<y<<")"<<endl;
+}
+
+int main()
+{
+    Tacka t1,t2;
+
+    cout<<"Tacka1 pre translacije =>";
+    t1.Inic(5,8);
+    t1.Pozicija();
+    cout<<"Tacka1 posle translacije =>";
+    t1.Trans(2,3);
+    t1.Pozicija();
+
+    cout<<"Tacka2 pre translacije =>";
+    t2.Inic(5,3);
+    t2.Pozicija();
+
+    cout<<"Tacka2 posle translacije =>";
+    t2.Trans(5,2);
+    t2.Pozicija();
+}
+
+*/
+
+
+class Tacka
+{
+    int x;
+    int y;
+
+public:
+    Tacka();
+    Tacka(int a,int b);
+    void Trans(int dx,int dy);
+    void Pozicija();
+    ~Tacka();
+};
+
+
+Tacka::Tacka()
+{
+    x=0;
+    y=0;
+    cout<<"__Konstruktor__"<<endl;
+
+}
+
+Tacka::Tacka(int a,int b=0)
+{
+    x=a;
+    y=b;
+}
+void Tacka::Trans(int dx,int dy)
+{
+    x +=dx;
+    y +=dy;
+}
+
+void Tacka::Pozicija()
+{
+    cout<<"(x,y) =>"<<"("<<x<<","<<y<<")"<<endl;
+}
+
+Tacka::~Tacka()
+{
+
+    cout<<"__Destruktor__";
+}
+
+
+int main()
+{
+    Tacka t1(5,5),t2(1,20),t3(7),t4;
+
+    cout<<"Tacka1:";
+    t1.Pozicija();
+
+    cout<<"Tacka2:";
+    t2.Pozicija();
+
+    cout<<"Tacka3:";
+    t3.Pozicija();
+
+    cout<<"Tacka4:";
+    t4.Pozicija();
+
 }
