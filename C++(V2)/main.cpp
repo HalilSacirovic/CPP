@@ -907,9 +907,242 @@ int main()
     Tacka3 teme3(teme2,6);
 }
 
-*/
+
+
+class Tacka
+{
+    int x;
+    int y;
+
+public:
+    void Inic(int a,int b);
+    void Trans(int dx,int dy);
+    void Pozicija();
+};
+
+void Tacka::Inic(int a,int b)
+{
+    x=a;
+    y=b;
+
+}
+
+
+void Tacka::Trans(int dx,int dy)
+{
+    x +=dx;
+    y +=dy;
+
+}
+
+void Tacka::Pozicija()
+{
+    cout<<"(x,y) =>"<<"("<<x<<","<<y<<")"<<endl;
+
+}
+
+
+int main()
+{
+
+    Tacka t;
+    cout<<"Pozicija pre translacije:";
+    t.Inic(5,6);
+    t.Pozicija();
+
+    cout<<"Pozicija posle translacije:";
+    t.Trans(10,12);
+    t.Pozicija();
+}
+
+
+class Student
+{
+    char ime_prezime[30];
+    int index;
+
+public:
+    void Inic(char* i,int x);
+    void Ispis();
+};
+
+void Student::Inic(char* i,int x)
+{
+    strcpy(ime_prezime,i);
+    index=x;
+}
+
+void Student::Ispis()
+{
+    cout<<"Student:"<<ime_prezime<<"\nBroj Indexa:"<<index<<endl;
+}
+
+
+int main()
+{
+    Student halil,zex;
+
+    halil.Inic("Halil Sacirovic",11);
+    halil.Ispis();
+    zex.Inic("Zeljko Timotijevic",125);
+    zex.Ispis();
+}
+
+
+
+class Automobil
+{
+public:
+    float rezervoar;
+    float potrosnja;
+
+public:
+    void Inic(float gorivo,float potrosnja);
+    double Predji(int km);
+    void Ispis();
+    void Adresa();
+};
+
+
+void Automobil::Adresa(){
+    cout<<"Auto se nalazi na adresi:"<<this<<endl;
+}
+
+void Automobil::Inic(float gorivo,float potrosnja)
+{
+    rezervoar = gorivo;
+    this->potrosnja = potrosnja;
+}
+
+double Automobil::Predji(int km)
+{
+    cout<<"Automobil je presao:"<<km<<endl;
+
+    float predji =potrosnja*(km/100.0);
+    rezervoar -= predji;
+
+    return  rezervoar;
+}
+
+void Automobil::Ispis()
+{
+    cout<<"Rezervoar:"<<rezervoar<<"\nPotrosnja:"<<potrosnja<<endl;
+}
+
+
+int main()
+{
+    Automobil audi;
+
+    audi.Adresa();
+    audi.Inic(60,7.32);
+    audi.Ispis();
+    audi.Predji(100);
+    audi.Ispis();
+    audi.Predji(350);
+    audi.Ispis();
+
+    return 0;
+}
 
 
 
 
+class DvaZnaka
+{
+public:
+    char c1;
+    char c2;
 
+public:
+    void Inic(char z1,char z2);
+    void Uvecaj();
+    void Ispis();
+    void Adresa();
+
+};
+
+
+void DvaZnaka::Adresa(){
+    cout<<"Znak se nalazi na adresi:"<<this<<endl;
+}
+
+void DvaZnaka::Inic(char z1,char z2)
+{
+   this->c1=z1;
+   this->c2=z2;
+}
+
+void DvaZnaka::Uvecaj()
+{
+    c1++;
+    c2++;
+
+    cout<<"Znakovi su uvecati"<<endl;
+}
+
+void DvaZnaka::Ispis()
+{
+    cout<<"Prvi Znak:"<<c1<<"\nDrugi Znak:"<<c2<<endl;
+}
+
+int main()
+{
+    DvaZnaka dz;
+    dz.Adresa();
+    dz.Inic('A','B');
+    dz.Ispis();
+    dz.Uvecaj();
+    dz.Ispis();
+}
+*/
+#include<math.h>
+
+
+class Trougao
+{
+    float a;
+    float b;
+    float c;
+public:
+    void Inic(float a,float b,float c);
+    void Pisi();
+    float Pov();
+    float Obim();
+};
+
+void Trougao::Inic(float a,float b,float c)
+{
+    this->a=a;
+    this->b=b;
+    this->c=c;
+}
+
+void Trougao::Pisi()
+{
+    cout<<"a:"<<a<<"\nb:"<<b<<"\nc:"<<c<<endl;
+}
+
+float Trougao::Pov()
+{
+    float s;
+    s=(a+b+c)/2;
+    float p;
+    p=sqrt(s*(s-a)*(s-b)*(s-c));
+    return p;
+}
+
+float Trougao::Obim()
+{
+    return a+b+c;
+}
+
+int main()
+{
+    Trougao t;
+
+    t.Inic(5.2,6.3,1.2);
+    t.Pisi();
+    cout<<"Povrsina Iznosi:"<<t.Pov()<<endl;
+    cout<<"Obim iznosi:"<<t.Obim()<<endl;
+}
