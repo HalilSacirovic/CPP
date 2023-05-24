@@ -1635,7 +1635,6 @@ int main()
     return 0;
 }
 
-*/
 
 
 #include <iostream>
@@ -1767,3 +1766,168 @@ int main()
     return 0;
 }
 
+
+
+
+class Poklon
+{
+public:
+    static int posId;
+private:
+    int id;
+    float cena;
+public:
+    Poklon(float c)
+    {
+        cena = c;
+        id=++posId;
+    }
+
+    Poklon(const Poklon &p)
+    {
+        cena = p.cena;
+        id = ++posId;
+    }
+
+    void Ispis()
+    {
+        cout<<id<<"("<<cena<<")";
+    }
+};
+
+
+int Poklon::posId = 0;
+
+int main()
+{
+
+    Poklon p1(500),p2(150);
+    p1.Ispis();
+    p2.Ispis();
+    Poklon p3 = p1;
+
+    p3.Ispis();
+
+    cout<<"Trenutno je stvoreno:"<<Poklon::posId<<"Objekata klase Poklon"<<endl;
+}
+*/
+
+enum Zanr {POP,REP,ROK};
+
+class Izvodjac
+{
+    string naziv;
+    Zanr zanr;
+
+    string nadjiZanr(Zanr zanr)
+    {
+        switch(zanr)
+        {
+            case 0:return "POP";break;
+            case 1:return "REP";break;
+            case 2:return "ROK";break;
+            default:return "Greska"; break;
+        }
+    }
+
+public:
+    Izvodjac(string naz,Zanr z)
+    {
+        naziv=naz;
+        zanr = z;
+    }
+    Izvodjac()
+    {
+        naziv = "Micko";
+        zanr = POP;
+    }
+
+    Zanr getZanr()const{return zanr;}
+
+    void Pisi();
+
+};
+
+
+void Izvodjac::Pisi()
+{
+    cout<<naziv<<"("<<nadjiZanr(zanr)<<")"<<endl;
+}
+
+
+class Pesma
+{
+    int minut,sek;
+    string naziv;
+    Izvodjac* izv;
+    int br,kap;
+
+public:
+    Pesma(int m,int s,string naz,int k)
+    {
+        minut = m;
+        sek = s;
+        naziv=naz;
+        kap = k;
+        izv = new Izvodjac[kap];
+        br=0;
+    }
+
+    ~Pesma(){delete []izv;};
+
+    void dodaj(Izvodjac *i)
+    {
+        if(br<kap)
+        {
+            izv[br++]= *i;
+        }
+    }
+    int dohvSek()const{return sek;}
+    int dohvMin()const {return minut;};
+    void Pisi();
+    friend bool duze(const Pesma &p1,const Pesma &p2)
+    {
+        if(p1.minut>p2.minut || (p1.minut == p2.minut && p1.sek>p2.sek) )
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
+
+void Pesma::Pisi()
+{
+    cout<<"Pesma("<<naziv<<"-"<<minut<<":"<<sek<<")"<<endl;
+    cout<<"Izvodjaci:";
+    for(int i=0;i<br;i++)
+    {
+        izv[i].Pisi();
+    }
+}
+
+int main()
+{
+    Izvodjac iz1("Micko",POP),iz2("Uki",ROK),iz3("Jocke",REP);
+
+    Pesma p1(2,55,"Pesma",2),p2(3,23,"Pesma2",1),p3(2,44,"Pesma3",1);
+
+
+    //
+
+    iz1.Pisi();
+    iz2.Pisi();
+    iz3.Pisi();
+    p1.dodaj(&iz1);
+    p1.dodaj(&iz2);
+    p1.dodaj(&iz3);
+    p2.dodaj(&iz2);
+    p2.dodaj(&iz3);
+    p3.dodaj(&iz1);
+    p3.dodaj(&iz2);
+     p3.dodaj(&iz3);
+    p1.Pisi();
+    p2.Pisi();
+    p3.Pisi();
+}
