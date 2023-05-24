@@ -1268,8 +1268,7 @@ int main()
     t4.Pozicija();
 
 }
-*/
-
+
 
 class Clan
 {
@@ -1369,3 +1368,402 @@ int main()
 
 
 
+
+
+class Fibonaci
+{
+public:
+    int n;
+    int *niz;
+public:
+    Fibonaci()
+    {
+
+        cout<<"Konstruktor "<<endl;
+        cout<<"Unesite n";
+        cin>>n;
+
+        niz = new int[n];
+        niz[0]=1;
+        niz[1]=1;
+        for(int i=2;i<n;i++)
+        {
+            niz[i]=niz[i-1]+niz[i-2];
+        }
+    }
+
+    Fibonaci(int n)
+    {
+        cout<<"Konstruktor sa argumentom"<<endl;
+        this->n=n;
+         niz = new int[this->n];
+        niz[0]=1;
+        niz[1]=1;
+        for(int i=2;i<this->n;i++)
+        {
+            niz[i]=niz[i-1]+niz[i-2];
+        }
+    }
+
+    Fibonaci(const Fibonaci &F)
+    {
+
+        cout<<"Konstruktor KOPIRANJA"<<endl;
+        this->n =F.n;
+         niz = new int[this->n];
+        niz[0]=1;
+        niz[1]=1;
+        for(int i=2;i<this->n;i++)
+        {
+            this->niz[i]=F.niz[i];
+        }
+        cout<<"\nOvo je konstuktor kopiranja."<<endl;
+    }
+
+    int Suma()
+    {
+        int s=0;
+
+        for(int i=0;i<n;i++)
+        {
+            s +=niz[i];
+        }
+
+        return s;
+    }
+
+    int vrednost(int i)
+    {
+        if(i>n)
+        {
+            return -1;
+
+        }
+        return niz[i-1];
+    }
+
+    void Prosiri(int x)
+    {
+        int *pomocni;
+        pomocni = new int[n];
+        for(int i=0;i<n;i++)
+        {
+            pomocni[i]=niz[i];
+
+        }
+      delete [] niz;
+      n += x; // n uvecano za vrednost x
+      niz = new int[n];
+      for(int i=0;i<(n-x);i++)
+        niz[i] = pomocni[i];
+      for(int i=(n-x);i<n;i++)
+        niz[i] = niz[i-1] + niz[i-2];
+    }
+      ~Fibonaci()
+      {
+       delete [] niz;
+      }
+
+};
+
+
+int main()
+{
+    Fibonaci f1,f2(10),f3(f2);
+
+
+    int i;
+
+    cout<<endl;
+
+    cout<<"Fibonaci 3:"<<endl;
+
+     for(i=0;i<f3.n;i++)
+    {
+        cout<<f3.niz[i]<<" ";
+
+    }
+    cout<<endl;
+
+
+    cout<<"Fibonaci 3 (PROSIREN):"<<endl;
+
+    f3.Prosiri(5);
+
+     for(i=0;i<f3.n;i++)
+    {
+        cout<<f3.niz[i]<<" ";
+
+    }
+    cout<<endl;
+
+
+
+    return 0;
+}
+
+
+
+class Ocena
+{
+    char ime_predmeta[30];
+    int ocena;
+    char datum[20];
+
+public:
+    Ocena()
+    {
+        strcpy(ime_predmeta,"OOP");
+        ocena = 10;
+        strcpy(datum,"28.10.2022");
+
+    }
+
+    Ocena(char *ip,int o,char *d)
+    {
+        strcpy(ime_predmeta,ip);
+        ocena=o;
+        strcpy(datum,d);
+    }
+
+   bool jeLiPolozio(){
+    if(ocena>5)
+    {
+        return true;
+
+    }
+    else {
+        return false;
+    }
+    }
+    void setO(int o){ocena=o;}
+    void setIP(char *ip){strcpy(ime_prezime,ip);}
+    void setDatum(char *d){strcpy(datum,d);}
+
+    int   getO(){return ocena;}
+    char* getIP(){return ime_prezime;}
+    char* getDatum(){return datum;)
+
+    void ispis()
+    {
+        cout<<"Ime i prezime:"<<ime_prezime<<"\nOcena:"<<ocena<<"\nDatum:"<<datum<<endl;
+    }
+};
+
+class Student
+{
+    char imeIprezime[30];
+    Ocena o1,o2,o3;
+
+public:
+    Student()
+    {
+            strcpy(imeIprezime,"Halil Sacirovic");
+
+            // PREDMET 1
+            o1.setIP("ORT");
+            o1.setO(7);
+            o1.setDatum("25.02.2023");
+
+
+            // PREDMET 2
+
+            o2.setIP("OP");
+            o2.setO(6);
+            o2.setDatum("16.03.2023");
+
+            // PREDMET 3
+
+            o3.setIP("Linearna Algebra");
+            o3.setO(10);
+            o3.setDatum("20.06.2023");
+
+    }
+
+    Student(char *ip,Ocena oc1,Ocena oc2,Ocena oc3)
+    {
+        strcpy(imeIprezime,ip);
+        o1=oc1;
+        o2=oc2;
+        o3=oc3;
+    }
+
+    int UkupnoPolozenih()
+    {
+        int s =0;
+
+        if(o1.jeLiPolozio()=== true) s++;
+
+        if(o2.jeLiPolozio()=== true) s++;
+
+        if(o3.jeLiPolozio()=== true) s++;
+
+        return s;
+    }
+
+    float Prosek()
+    {
+        float s = (o1.getO()+o2.getO()+o3.getO())/3;
+
+        return s;
+
+    }
+
+    void Ispis()
+    {
+        cout<<"Student:"<<imeIprezime<<"je polozio:"<<UkupnoPolozenih()<<"ispita i prosek mu je:"<<Prosek()<<endl;
+        cout<<"Ocene studenta su:";
+        o1.ispis();
+        o2.ispis();
+        o3.ispis();
+
+
+    }
+
+};
+
+
+
+int main()
+{
+    Student halil;
+
+    halil.ispis();
+
+    Ocena oo1,oo2("OOP",9,"25.06.2018"),oo3("AR2",8,"02.10.2022");
+
+    return 0;
+}
+
+*/
+
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Ocena
+{
+    char ime_predmeta[30];
+    int ocena;
+    char datum[20];
+
+public:
+    Ocena()
+    {
+        strcpy(ime_predmeta, "OOP");
+        ocena = 10;
+        strcpy(datum, "28.10.2022");
+    }
+
+    Ocena(char *ip, int o, char *d)
+    {
+        strcpy(ime_predmeta, ip);
+        ocena = o;
+        strcpy(datum, d);
+    }
+
+    bool jeLiPolozio()
+    {
+        if (ocena > 5)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void setO(int o) { ocena = o; }
+    void setIP(char *ip) { strcpy(ime_predmeta, ip); }
+    void setDatum(char *d) { strcpy(datum, d); }
+
+    int getO() { return ocena; }
+    char *getIP() { return ime_predmeta; }
+    char *getDatum() { return datum; }
+
+    void ispis()
+    {
+        cout << "Ime predmeta: " << ime_predmeta << "\nOcena: " << ocena << "\nDatum: " << datum << endl;
+    }
+};
+
+class Student
+{
+    char imeIprezime[30];
+    Ocena o1, o2, o3;
+
+public:
+    Student()
+    {
+        strcpy(imeIprezime, "Halil Sacirovic");
+
+        // PREDMET 1
+        o1.setIP("ORT");
+        o1.setO(7);
+        o1.setDatum("25.02.2023");
+
+        // PREDMET 2
+        o2.setIP("OP");
+        o2.setO(6);
+        o2.setDatum("16.03.2023");
+
+        // PREDMET 3
+        o3.setIP("Linearna Algebra");
+        o3.setO(10);
+        o3.setDatum("20.06.2023");
+    }
+
+    Student(char *ip, Ocena oc1, Ocena oc2, Ocena oc3)
+    {
+        strcpy(imeIprezime, ip);
+        o1 = oc1;
+        o2 = oc2;
+        o3 = oc3;
+    }
+
+    int UkupnoPolozenih()
+    {
+        int s = 0;
+
+        if (o1.jeLiPolozio() == true)
+            s++;
+
+        if (o2.jeLiPolozio() == true)
+            s++;
+
+        if (o3.jeLiPolozio() == true)
+            s++;
+
+        return s;
+    }
+
+    float Prosek()
+    {
+        float s = (o1.getO() + o2.getO() + o3.getO()) / 3.0;
+
+        return s;
+    }
+
+    void Ispis()
+    {
+        cout << "Student: " << imeIprezime << " je polozio: " << UkupnoPolozenih() << " ispita i prosek mu je: " << Prosek() << endl;
+        cout << "Ocene studenta su:" << endl;
+        o1.ispis();
+        o2.ispis();
+        o3.ispis();
+    }
+};
+
+int main()
+{
+    Student halil;
+
+    halil.Ispis();
+
+    Ocena oo1, oo2("OOP", 9, "25.06.2018"), oo3("AR2", 8, "02.10.2022");
+
+    return 0;
+}
+
