@@ -1882,8 +1882,8 @@ public:
             izv[br++]= *i;
         }
     }
-    int dohvSek()const{return sek;}
-    int dohvMin()const {return minut;};
+    //int dohvSek()const{return sek;}
+    //int dohvMin()const {return minut;};
     void Pisi();
     friend bool duze(const Pesma &p1,const Pesma &p2)
     {
@@ -1930,4 +1930,18 @@ int main()
     p1.Pisi();
     p2.Pisi();
     p3.Pisi();
+
+
+    bool rezultat = duze(p1, p2);
+    if (rezultat) {
+        cout << "Pesma p1 je duza od pesme p2." << endl;
+    } else {
+        cout << "Pesma p2 je duza od pesme p1." << endl;
+    }
+
+
+    // OVO JE NACIN KAKO SE POZIVA PRIJATELJSKA FUNKCIJA GORE SE STAVLJA REZULTAT I POSLE SE POZIVA FUNKCIJA DUZE I U NJU SE STAVLJAJU ARGUMENTI OD PESME
+    // I AKO JE REZULTAT TRUE ONO CE NAPISATI PRVI USLOV AKO NIJE ONDA PISE ELSE USLOV
+
+
 }
