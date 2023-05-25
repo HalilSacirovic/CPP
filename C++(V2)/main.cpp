@@ -2263,7 +2263,6 @@ int main()
 }
 
 
-*/
 
 
 class Kvadar
@@ -2321,3 +2320,232 @@ int main()
 
 
 
+
+
+
+ #include <iostream>
+
+class Vektor {
+    int v[3];
+public:
+    Vektor(const int a[]) {
+        for (int i = 0; i < 3; i++) {
+            v[i] = a[i];
+        }
+    }
+
+    int getX() { return v[0]; }
+    int getY() { return v[1]; }
+    int getZ() { return v[2]; }
+
+    void setX(int a) {
+        v[0] = a;
+    }
+
+    void setY(int a) {
+        v[1] = a;
+    }
+
+    void setZ(int b) {
+        v[2] = b;
+    }
+
+    void ispis() {
+        std::cout << "V(";
+        for (int i = 0; i < 3; i++) {
+            std::cout << v[i];
+            if (i != 2)
+                std::cout << ",";
+        }
+        std::cout << ")" << std::endl;
+    }
+
+    Vektor dodaj(Vektor v);
+    Vektor operator +(Vektor v);
+    Vektor pomnozi(int k);
+    Vektor operator *(int k);
+
+    const Vektor& operator =(const Vektor& v);
+
+    Vektor operator ++();
+
+    Vektor operator ++(int);
+
+    Vektor operator -();
+
+    int& operator [](int i);
+};
+
+Vektor Vektor::operator +(Vektor v1) {
+    Vektor v2 = *this;
+
+    for (int i = 0; i < 3; i++) {
+        v2.v[i] += v1.v[i];
+    }
+    return v2;
+}
+
+Vektor Vektor::operator *(int k) {
+    Vektor v2 = *this;
+
+    for (int i = 0; i < 3; i++) {
+        v2.v[i] *= k;
+    }
+    return v2;
+}
+
+const Vektor& Vektor::operator =(const Vektor& v1) {
+    if (&v1 == this) {
+        return *this;
+    }
+    for (int i = 0; i < 3; i++) {
+        v[i] = v1.v[i];
+    }
+    return *this;
+}
+
+Vektor Vektor::operator ++(int) {
+    Vektor temp = *this;
+    for (int i = 0; i < 3; i++) {
+        v[i]++;
+    }
+    return temp;
+}
+
+Vektor Vektor::operator ++() {
+    for (int i = 0; i < 3; i++) {
+        v[i]++;
+    }
+    return *this;
+}
+
+Vektor Vektor::operator -() {
+    Vektor t = *this;
+    for (int i = 0; i < 3; i++) {
+        t.v[i] *= -1;
+    }
+    return t;
+}
+
+int& Vektor::operator [](int i) {
+    return v[i];
+}
+
+int main() {
+    int a[] = { 1,2,3 };
+    Vektor v(a);
+    v.ispis();
+    Vektor zbir = v + v;
+    zbir.ispis();
+    (v * 2).ispis();
+    v = v = zbir;
+    zbir.ispis();
+    (zbir++).ispis();
+    (-v).ispis();
+    std::cout << v[2];
+    return 0;
+}
+
+
+
+class PonudjeniOdgovor {
+private:
+    std::string odgovor;
+    bool tacan;
+    int udeoPoena;
+
+public:
+    PonudjeniOdgovor(std::string odgovor = "", bool tacan = false, int udeoPoena = 0) {
+        this->odgovor = odgovor;
+        this->tacan = tacan;
+        this->postaviUdeoPoena(udeoPoena);
+    }
+
+    std::string getOdgovor() const {
+        return odgovor;
+    }
+
+    void setOdgovor(const std::string& noviOdgovor) {
+        odgovor = noviOdgovor;
+    }
+
+    bool isTacan() const {
+        return tacan;
+    }
+
+    void setTacan(bool jeTacan) {
+        tacan = jeTacan;
+    }
+
+    int getUdeoPoena() const {
+        return udeoPoena;
+    }
+
+    void setUdeoPoena(int noviUdeoPoena) {
+        postaviUdeoPoena(noviUdeoPoena);
+    }
+
+    void ispisiOdgovor() const {
+        std::cout << odgovor << ": " << udeoPoena << "%" << std::endl;
+    }
+
+private:
+    void postaviUdeoPoena(int noviUdeoPoena) {
+        if (noviUdeoPoena >= -100 && noviUdeoPoena <= 100) {
+            udeoPoena = noviUdeoPoena;
+        } else {
+            std::cout << "Greška: Neispravan udeo poena. Postavljam na 0%." << std::endl;
+            udeoPoena = 0;
+        }
+    }
+};
+
+int main() {
+    PonudjeniOdgovor odgovor1("Odgovor 1", true, 50);
+    PonudjeniOdgovor odgovor2("Odgovor 2", false, 30);
+
+    odgovor1.ispisiOdgovor();
+    odgovor2.ispisiOdgovor();
+
+    odgovor1.setUdeoPoena(75);
+    odgovor1.ispisiOdgovor();
+
+    odgovor2.setOdgovor("Novi odgovor");
+    odgovor2.ispisiOdgovor();
+
+    return 0;
+}
+ */
+
+
+
+ class Artikal
+ {
+     char naziv[20];
+     double cena;
+     int popust;
+public:
+    Artikal(char *n,double c,int p=0)
+    {
+        strcpy(naziv,n);
+        cena = c;
+        popust = p;
+    }
+
+    void Ispis()const
+    {
+
+        cout<<"Ime artikla:"<<naziv<<"\nCena Artikla:"<<cena<<"\nPopust:"<<popust<<"\nCena sa popustom:"<<cena - (popust*cena/100.0)<<endl;
+    }
+
+
+};
+
+
+int main()
+{
+    Artikal a("Vrnika",150,10);
+
+    a.Ispis();
+
+}
