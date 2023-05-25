@@ -1810,7 +1810,6 @@ int main()
 
     cout<<"Trenutno je stvoreno:"<<Poklon::posId<<"Objekata klase Poklon"<<endl;
 }
-*/
 
 enum Zanr {POP,REP,ROK};
 
@@ -1882,8 +1881,8 @@ public:
             izv[br++]= *i;
         }
     }
-    //int dohvSek()const{return sek;}
-    //int dohvMin()const {return minut;};
+    int dohvSek()const{return sek;}
+    int dohvMin()const {return minut;};
     void Pisi();
     friend bool duze(const Pesma &p1,const Pesma &p2)
     {
@@ -1912,6 +1911,7 @@ int main()
     Izvodjac iz1("Micko",POP),iz2("Uki",ROK),iz3("Jocke",REP);
 
     Pesma p1(2,55,"Pesma",2),p2(3,23,"Pesma2",1),p3(2,44,"Pesma3",1);
+
 
 
     //
@@ -1943,5 +1943,324 @@ int main()
     // OVO JE NACIN KAKO SE POZIVA PRIJATELJSKA FUNKCIJA GORE SE STAVLJA REZULTAT I POSLE SE POZIVA FUNKCIJA DUZE I U NJU SE STAVLJAJU ARGUMENTI OD PESME
     // I AKO JE REZULTAT TRUE ONO CE NAPISATI PRVI USLOV AKO NIJE ONDA PISE ELSE USLOV
 
-
+ cout<<"Pesma 1 traje:"<<p1.dohvSek()<<endl;
 }
+
+*/
+
+
+/*
+class Vektor
+{
+    int v[3];
+public:
+    Vektor(const int a[])
+    {
+        for(int i=0;i<3;i++)
+        {
+            v[i]=a[i];
+        }
+    }
+
+    int getX(){return v[0];}
+    int getY(){return v[1];}
+    int getZ(){return v[2];}
+
+
+    void setX(int a)
+    {
+        v[0]=a;
+    }
+
+
+    void setY(int a)
+    {
+        v[1]=a;
+    }
+
+    void setZ(int b)
+    {
+        v[2]=b;
+    }
+
+    void ispis()
+    {
+        cout<<"V(";
+        for(int i=0; i<3;i++)
+        {
+            cout<<v[i]<<",";
+            cout<<")"<<endl;
+        }
+    }
+
+    Vektor dodaj(Vektor v);
+    Vektor operator +(Vektor v);
+    Vektor pomnozi(int k);
+    Vektor operator *(int k);
+
+    const Vektor& operator =(const Vektor& v);
+
+    Vektor operator ++();
+
+    Vektor operator ++(int);
+
+    Vektor operator -();
+
+    int & operator [](int i);
+
+    Vektor Vektor::operator +(Vektor v1)
+    {
+        Vektor v2 = *this;
+
+        for(int i=0;i<3;i++)
+        {
+            v2.v[i]+=v1.v[i];
+
+        }
+        return v2;
+    }
+
+    Vektor Vektor::operator *(int k)
+    {
+        Vektor v2 =*this;
+
+        for(int i=0;i<3;i++)
+        {
+            v2.v[i]*=k;
+        }
+        return v2;
+    }
+
+    const Vektor& Vektor::operator =(const Vektor& v1)
+    {
+        if(&v1==this){return *this;}
+        for(int i=0;i<3;i++)
+        {
+            v[i] = v1.v[i];
+        }
+        return *this;
+    }
+
+    Vektor Vektor::operator ++(int)
+    {
+        for(int i=0;i<3;i++)
+        {
+
+            v[i]++;
+        }
+
+        return *this;
+    }
+
+    Vektor Vektor::operator ++()
+    {
+        for(int i=0;i<3;i++)
+        {
+            v[i]++;
+        }
+        return *this;
+    }
+
+
+    Vektor Vektor::operator -()
+    {
+        Vektor t=*this
+        for(int i=0;i<3;i++)
+        {
+            t.v[i]*=-1;
+        }
+        return t;
+    }
+
+    int & Vektor::operator[](int i)
+    {
+        return v[i];
+    }
+};
+
+
+int main(){
+int a[]={1,2,3};
+  Vektor v(a);  v.ispis();
+  Vektor zbir=v+v;  zbir.ispis();
+  (v*2).ispis();
+  v=v=zbir;
+  zbir.ispis();
+  (zbir++).ispis();
+  (-v).ispis();
+  cout<<v[2];
+return 0;
+}
+
+
+
+PROVERI KADA PRORADI CHAT GPT
+
+
+*/
+
+
+
+class Datum
+{
+public:
+    int d;
+    int m;
+    int g;
+public:
+    Datum()
+    {
+        d=1;
+        m=1;
+        g=2018;
+    }
+    Datum(int d,int m,int g)
+    {
+        this->d =d ;
+        this->m=m;
+        this->g=g;
+    }
+    void Ispis()
+    {
+        cout<<"Danas je datum "<<d<<"."<<m<<"."<<g<<endl;
+
+    }
+
+    Datum uporedi(Datum dat)
+    {
+        Datum pom;
+
+        if(d >= dat.d)
+        {
+            pom.d =d - dat.d;
+        }
+        else
+        {
+                switch(m)
+            {
+
+
+                  case 2:case 4:case 6:case 8:case 9:
+                       case 11:case 1: pom.d = 31+d - dat.d;
+                     break;
+                  case 5:case 7:case 10:case 12:
+                       pom.d = 30+d - dat.d;
+                       break;
+                       case 3:
+                       if((g % 4 == 0 && g % 100 != 0) || (g % 400 == 0))
+                       pom.d = 29+d - dat.d;
+                       else
+                       pom.d = 28+d - dat.d;
+                       break;
+                }
+                m --;
+              }
+                if(m == 0)
+                 {
+                   m = 12;
+                   g --;
+                 }
+                if(m >= dat.m)
+
+                           {
+                  pom.m = m - dat.m;
+                }
+                else
+                {
+                  pom.m = 12 + m - dat.m;
+                  g --;
+                }
+                pom.g = g - dat.g;
+      return pom;
+      }
+};
+
+
+class Rodjendan:public Datum
+{
+public:
+    char ime[15];
+    char prezime[20];
+public:
+    Rodjendan()
+    {
+        strcpy(ime,"Hitljer");
+        strcpy(prezime,"Hitljerovic");
+        d=1;
+        m=1;
+        g=1925;
+
+    }
+
+    Rodjendan(char *i,char *p,int d,int m, int g)
+    {
+        strcpy(ime,i);
+        strcpy(prezime,p);
+        this->d=d;
+        this->m=m;
+        this->g=g;
+    }
+
+    bool daLiJe(Datum dat)
+    {
+        if(dat.d == d && dat.m == m)
+            return true;
+        return false;
+    }
+    void IspisSlavljenika(Datum dat)
+    {
+        if(daLiJe(dat) == true)
+        {
+            cout<<"Danas je "<<ime<<"u rodjendan.Cestimo!"<<endl;
+
+        }
+        else{
+            Datum pom = uporedi(dat);
+            cout<<"Do rodjendana ima jos:"<<pom.d<<"dana i";
+            cout<<pom.m<<"meseci"<<endl;
+        }
+    }
+
+    int godine(Datum dat)
+    {
+            if(daLiJe(dat) == true)
+            {
+                return dat.g -g;
+            }
+            else
+            {
+                if(dat.m >m)
+                {
+                    return dat.g - g;
+                }
+                else if(dat.m == m)
+                {
+                    if(dat.d>d)
+                    {
+                        return dat.g - g;
+                    }
+                    else
+                    {
+                        return dat.g- 1 - g;
+                    }
+                }
+                else{
+                    return dat.g - 1 - g;
+                }
+            }
+
+    }
+
+};
+
+
+int main()
+{
+    Rodjendan hitljer;
+
+    Datum dat(28,10,1992);
+    cout<<"Hitljer ima"<<hitljer.godine(dat)<<endl;
+    hitljer.IspisSlavljenika(dat);
+}
+
+
