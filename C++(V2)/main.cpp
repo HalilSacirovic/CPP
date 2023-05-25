@@ -2097,7 +2097,6 @@ return 0;
 PROVERI KADA PRORADI CHAT GPT
 
 
-*/
 
 
 
@@ -2108,13 +2107,13 @@ public:
     int m;
     int g;
 public:
-    Datum()
+    Datum() // KONSTRUKTOR BEZ ARGUMENATA
     {
         d=1;
         m=1;
         g=2018;
     }
-    Datum(int d,int m,int g)
+    Datum(int d,int m,int g) // KONSTRUKTOR SA ARGUMENTIMA
     {
         this->d =d ;
         this->m=m;
@@ -2262,5 +2261,63 @@ int main()
     cout<<"Hitljer ima"<<hitljer.godine(dat)<<endl;
     hitljer.IspisSlavljenika(dat);
 }
+
+
+*/
+
+
+class Kvadar
+{
+    protected:
+        int a;
+        int b;
+        int c;
+
+    public:
+        Kvadar()
+        {
+            a=10;
+            b=10;
+            c=30;
+
+        }
+
+        Kvadar( int d ,int e, int f)
+        {
+            a=d;
+            b=e;
+            c=f;
+
+        }
+        void Ispis()
+        {
+            cout<<"a:"<<a<<"b:"<<b<<"c:"<<c<<endl;
+        }
+};
+
+
+class Bazen: public Kvadar
+{
+public:
+    int d;
+public:
+    Bazen():Kvadar(){d =50;}
+    void Ispis()
+    {
+        Kvadar::Ispis();
+        cout<<"d:"<<d<<endl;
+    }
+};
+
+int main()
+{
+    Kvadar k;
+
+    Bazen b;
+    k.Ispis();
+    b.Ispis();
+}
+
+
 
 
