@@ -156,4 +156,120 @@ int main()
 */
 
 
+// KONSTRUKTOR I DESTRUKTOR
 
+/*
+
+class Tacka
+{
+    int x;
+    int y;
+public:
+    Tacka()
+    {
+        x=0;
+        y=0;
+    }
+
+    Tacka(int a , int b )
+    {
+        x=a;
+        y=b;
+    }
+
+
+    void Translacija(int dx,int dy)
+    {
+        x +=dx;
+        y +=dy;
+    }
+
+    void Ispis()
+    {
+        cout<<"(x,y)=>"<<x<<","<<y<<endl;
+    }
+};
+
+
+int main ()
+{
+    Tacka t1,t2(5,2);
+
+
+    t1.Ispis();
+
+    t1.Translacija(2,3);
+
+
+    t1.Ispis();
+
+
+    t2.Ispis();
+
+
+    t2.Translacija(2,3);
+
+    t2.Ispis();
+
+
+
+
+}
+
+
+*/
+
+#include <iostream>
+using namespace std;
+
+class Tacka2 {
+    public:
+    int x;
+    int y;
+public:
+    Tacka2(int x, int y) {
+        this->x = x;
+        this->y = y;
+        cout << "Tacka2:\nX=" << this->x << endl;
+        cout << "Y=" << this->y << endl;
+    }
+};
+
+class Tacka3 {
+    int x;
+    int y;
+    int z;
+public:
+   Tacka3()
+   {
+    cout<<"Napravljen je objekat na adresi"<<this<<endl ;
+    }
+  Tacka3(int x,int y,int z)
+      {this->x=x;
+       this->y=y;
+       this->z=z;
+       cout<<"Napravljen je objekat na adresi"<<this<<endl;
+       cout<<"Tacka3:\nX="<<this->x<<endl;
+       cout<<"Y="<<this->y<<endl;
+       cout<<"Z="<<this->z<<endl;
+       }
+
+   Tacka3(Tacka2 t, int z) {
+        this->x = t.x;
+        this->y = t.y;
+        this->z = z;
+
+
+       cout<<"Tacka3:\nX="<<this->x<<endl;
+       cout<<"Y="<<this->y<<endl;
+       cout<<"Z="<<this->z<<endl;
+
+    }
+
+};
+
+int main() {
+    Tacka2 teme1(1, 2); // Tacka3(), Tacka3 *this=&teme
+    Tacka2 teme2(4, 5);
+    Tacka3 teme3(teme2, 6);
+}
