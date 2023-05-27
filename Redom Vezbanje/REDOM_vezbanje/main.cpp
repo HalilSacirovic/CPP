@@ -217,7 +217,6 @@ int main ()
 }
 
 
-*/
 
 #include <iostream>
 using namespace std;
@@ -273,3 +272,65 @@ int main() {
     Tacka2 teme2(4, 5);
     Tacka3 teme3(teme2, 6);
 }
+*/
+
+
+class Tacka
+{
+    int x;
+    int y;
+public:
+    Tacka()
+    {
+        x=0;
+        y=0;
+    }
+
+    Tacka(int a, int b=0)
+    {
+        x=a;
+        y=b;
+    }
+
+    void Translacija(int dx,int dy)
+    {
+        x +=dx;
+        y +=dy;
+    }
+
+    ~Tacka()
+    {
+        cout<<"Destruktor"<<endl;
+    }
+
+    void Ispis()
+    {
+        cout<<"\nx,y => "<<x<<","<<y<<endl;
+    }
+};
+
+int main ()
+{
+    Tacka t,t1(5,3),t2(5);
+
+    cout<<"Tacka :"<<endl;
+    t.Ispis();
+    t.Translacija(3,8);
+    t.Ispis();
+
+
+    cout<<"Tacka 1:"<<endl;
+
+
+    t1.Ispis();
+    t1.Translacija(7,15);
+    t1.Ispis();
+
+    cout<<"Tacka 2:"<<endl;
+
+
+    t2.Ispis();
+    t2.Translacija(13,2);
+    t2.Ispis();
+}
+
