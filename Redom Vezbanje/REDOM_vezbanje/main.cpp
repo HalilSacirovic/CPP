@@ -758,7 +758,6 @@ int main()
     p1.Ispis();
     p2.Ispis();
 }
-*/
 
 
 class Ocena
@@ -895,7 +894,7 @@ int main()
     o2.Ispis();
     cout<<endl;
     o3.Ispis();
-cout<<endl;
+    cout<<endl;
 
 
     s1.Ispis();
@@ -903,3 +902,107 @@ cout<<endl;
     s2.Ispis();
     cout<<endl;
 }
+*/
+
+
+// FRIEND FUNCTION
+
+
+enum Zanr  {POP,REP,ROK};
+
+class Izvodjac
+{
+    string naziv;
+    Zanr zanr;
+public:
+    string getZanr()
+    {
+          if (zanr == POP)
+        {
+            return "POP";
+        }
+        else if (zanr == REP)
+        {
+            return "REP";
+        }
+        else if (zanr == ROK)
+        {
+            return "ROK";
+        }
+        else
+        {
+            return "Nepoznat zanr";
+        }
+    }
+
+    Izvodjac(string n, Zanr z)
+    {
+        naziv = n;
+        zanr = z;
+    }
+
+    Izvodjac()
+    {
+        naziv = "Micko";
+        zanr = POP;
+    }
+
+    void Pisi()
+    {
+        cout<<naziv<<"("<<getZanr()<<")"<<endl;
+    }
+};
+
+
+class Pesma
+{
+    int minut,sek;
+    string naziv;
+    Izvodjac *izv;
+    int br,kap;
+
+public:
+    Pesma(int m , int s,string naz,int k)
+    {
+        minut =m;
+        sek = s;
+        naziv = naz;
+        kap = k;
+
+        izv = new Izvodjac[kap];
+        br =0;
+    }
+    ~Pesma() { delete [] izv; }
+
+
+void dodaj(Izvodjac *i) {
+if (br < kap)
+izv[br++] = *i;
+}
+int dohvSek() const { return sek; }
+int dohvMin() const { return minut; }
+void pisi() const;
+friend bool duze(const Pesma &p1,
+ const Pesma &p2) {
+if (p1.minut > p2.minut ||
+ p1.minut == p2.minut && p1.sek > p2.sek)
+ return true;
+else return false;
+}
+};
+
+void Pesma::pisi() const {
+cout << "P(" << naziv << " - "
+ << minut << ":" << sek << ")" << endl;
+cout << "Izvodjaci: ";
+for (int i = 0; i < br; i++)
+izv[i].Pisi();  }
+int main() {
+Izvodjac iz1("Micko", POP), iz2("Uki",ROK), iz3("Jocke", REP);
+Pesma p1(2, 55, "Pesma", 2), p2(3, 23, "Pesma2", 1), p3(2, 49, "Pesma3", 1);
+iz1.Pisi();iz2.Pisi();iz3.Pisi();
+p1.dodaj(&iz1);p1.dodaj(&iz2);p2.dodaj(&iz3);
+p1.pisi();p2.pisi();p3.pisi();
+return 0;
+}
+
