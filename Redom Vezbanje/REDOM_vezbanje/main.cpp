@@ -564,7 +564,7 @@ int main()
 
 
 }
-*/
+
 
 
 class Polinom
@@ -646,3 +646,260 @@ cin>>x;
 cout<<"Vrednost polinom p2 u tacki x= "<<x<<"  je"<<p2.Izracunaj(x)<<endl;
 }
 
+
+
+// OBJEKT KLASE KAO ATRIBUT
+
+
+
+
+
+class Prava
+{
+    int x1,y1,x2,y2,d;
+public:
+    Prava()
+    {
+        x1=0;
+        y1=0;
+        x2=0;
+        y2=0;
+    }
+    Prava(int x1,int y1,int x2,int y2)
+    {
+        this->x1=x1;
+        this->y1=y1;
+        this->x2=x2;
+        this->y2=y2;
+    }
+
+    void setX1(int x1){this->x1=x1;}
+    void setY1(int y1){this->y1=y1;}
+    void setX2(int x2){this->x2=x2;}
+    void setY2(int y2){this->y2=y2;}
+
+
+    int getX1(){return x1;}
+    int getY1(){return y1;}
+    int getX2(){return x2;}
+    int getY2(){return y2;}
+
+    int RacunajDuzinu()
+    {
+        d=sqrt(pow(x2-x1,2)+pow(y2-y1,2));
+        return d;
+    }
+
+    void Ispis()
+    {
+        cout<<"\nx1:"<<x1<<"\ny1:"<<y1<<"\nx2:"<<x2<<"\ny2:"<<x1<<endl;
+    }
+
+};
+
+
+class Kvadrat
+{
+    Prava vrh;
+    Prava dno;
+public:
+    Kvadrat()
+    {
+        vrh.setX1(1);
+        vrh.setY1(1);
+        vrh.setX2(2);
+        vrh.setY2(2);
+
+        dno.setX1(3);
+        dno.setY1(3);
+        dno.setX2(4);
+        dno.setY2(4);
+
+    }
+
+    Kvadrat(Prava po1, Prava po2){
+    vrh.setX1(po1.getX1());
+    vrh.setY1(po1.getY1());
+    vrh.setX2(po1.getX2());
+    vrh.setY2(po1.getY2());
+    dno.setX1(po2.getX1());
+    dno.setY1(po2.getY1());
+    dno.setX2(po2.getX2());
+    dno.setY2(po2.getY2());
+    }
+
+    float Povrsina()
+    {
+        return pow(vrh.RacunajDuzinu(),2);
+    }
+
+    float Obim()
+    {
+        return 4*vrh.RacunajDuzinu();
+    }
+
+    void Ispis()
+    {
+        cout<<"Povrsina:"<<Povrsina()<<"\nObim:"<<Obim()<<endl;
+    }
+
+
+};
+
+
+int main()
+{
+    Prava p1(0,10,10,50),p2;
+    Kvadrat k(p1,p2),k1;
+
+    k.Ispis();
+    k1.Ispis();
+
+    p1.Ispis();
+    p2.Ispis();
+}
+*/
+
+
+class Ocena
+{
+    char ime_predmeta[30];
+    int ocena;
+    char datum[20];
+public:
+    Ocena()
+    {
+        strcpy(ime_predmeta,"OOP");
+        ocena = 10;
+        strcpy(datum,"16.06.2023");
+    }
+
+    Ocena(char *ip,int o,char *d)
+    {
+        strcpy(ime_predmeta,ip);
+        ocena = o;
+        strcpy(datum,d);
+    }
+
+    bool jeLiPolozio()
+    {
+        if(ocena>5)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    void Ispis()
+    {
+        cout<<"Ime Predmeta"<<ime_predmeta<<"\nOcena:"<<ocena<<"\nDatum:"<<datum<<endl;
+    }
+
+    void setip(char *ip){strcpy(ime_predmeta,ip);}
+
+    void setOcena(int o){ocena =o;}
+
+    void setDatum(char *d){strcpy(datum,d);}
+
+
+    char* getip(){return ime_predmeta;}
+    int getOcena(){return ocena;}
+    char* getDatum(){return datum;}
+
+};
+
+
+class Student
+{
+    char imep[30];
+    int index;
+    Ocena o1,o2,o3;
+public:
+    Student()
+    {
+     strcpy(imep,"Halil Sacirovic");
+     o1.setip("ORT");
+     o1.setOcena(7);
+     o1.setDatum("25.02.2023");
+
+     o2.setip("OP");
+     o2.setOcena(6);
+     o2.setDatum("23.03.2023");
+
+     o3.setip("LA");
+     o3.setOcena(10);
+     o3.setDatum("21.02.2023");
+    }
+
+    Student(char *ip,Ocena oc1,Ocena oc2,Ocena oc3)
+    {
+          strcpy(imep,ip);
+
+        o1=oc1;
+        o2=oc2;
+        o3=oc3;
+
+    }
+
+    int UkupnoPolozenih()
+    {
+        int s=0;
+
+        if(o1.jeLiPolozio() == true)
+        {
+            s++;
+        }
+        if(o2.jeLiPolozio() == true)
+        {
+            s++;
+        }
+        if(o3.jeLiPolozio() == true)
+        {
+            s++;
+        }
+
+        return s;
+    }
+
+    float Prosek()
+    {
+        float suma =0;
+
+        suma = o1.getOcena() + o2.getOcena() + o3.getOcena();
+
+        return suma/3;
+    }
+
+    void Ispis()
+    {
+        cout<<"Student "<<imep<<"je polozio:"<<UkupnoPolozenih()<<"ispita"<<endl;
+
+        cout<<"Ocene studenta su:";
+        o1.Ispis();
+        o2.Ispis();
+        o3.Ispis();
+    }
+};
+
+int main()
+{
+    Ocena o1,o2("aMatematicka Analiza",7,"15.6.2023"),o3("Elektrotehnika",6,"21.06.2023");
+
+    Student s1,s2("Hanefija Catovic",o2,o3,o1);
+
+
+    o1.Ispis();
+    cout<<endl;
+    o2.Ispis();
+    cout<<endl;
+    o3.Ispis();
+cout<<endl;
+
+
+    s1.Ispis();
+    cout<<endl;
+    s2.Ispis();
+    cout<<endl;
+}
