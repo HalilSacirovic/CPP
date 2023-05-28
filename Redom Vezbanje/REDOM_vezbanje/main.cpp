@@ -902,7 +902,6 @@ int main()
     s2.Ispis();
     cout<<endl;
 }
-*/
 
 
 // FRIEND FUNCTION
@@ -1003,6 +1002,190 @@ Pesma p1(2, 55, "Pesma", 2), p2(3, 23, "Pesma2", 1), p3(2, 49, "Pesma3", 1);
 iz1.Pisi();iz2.Pisi();iz3.Pisi();
 p1.dodaj(&iz1);p1.dodaj(&iz2);p2.dodaj(&iz3);
 p1.pisi();p2.pisi();p3.pisi();
+
+
 return 0;
 }
+
+*/
+
+
+// PREKLAPANJE OPERATORA
+
+
+
+
+class Vektor
+{
+    int niz[3];
+public:
+    Vektor(const int v[])
+    {
+        for(int i=0;i<3;i++)
+        {
+            niz[i] =v[i];
+        }
+    }
+
+    void setX(int x){niz[0] = x;}
+    void setY(int y){niz[1]=y;}
+    void setZ(int z){niz[2]=z;}
+
+    int getX(){return niz[0];}
+    int getY(){return niz[1];}
+    int getZ(){return niz[2];}
+
+    void Ispis()
+    {
+        cout<<"x=>"<<getX()<<"\ny =>"<<getY()<<"\nz =>"<<getZ()<<endl;
+    }
+
+    Vektor dodaj(Vektor v);
+
+    Vektor operator +(Vektor v);
+
+    Vektor pomnozi(int k);
+
+    Vektor operator *(int k);
+
+    const Vektor& operator =(const Vektor &v);
+
+    Vektor operator ++();
+    Vektor operator ++(int);
+
+    Vektor operator -();
+    int & operator [](int i);
+
+};
+
+
+Vektor Vektor::operator+(Vektor v1)
+{
+    Vektor v2 = *this;
+
+    for(int i = 0;i<3;i++)
+    {
+        v2.niz[i] +=v1.niz[i];
+    }
+
+    return v2;
+}
+
+
+Vektor Vektor::operator*(int k)
+{
+        Vektor v2 = *this;
+
+        for(int i = 0; i<3;i++)
+        {
+            v2.niz[i] *=k;
+        }
+
+        return v2;
+}
+
+
+const Vektor& Vektor::operator=(const Vektor& v1)
+{
+    if(&v1 == this) return *this;
+
+    for(int i=0;i<3;i++)
+    {
+        niz[i] = v1.niz[i];
+    }
+    return *this;
+}
+
+Vektor Vektor::operator++(int)
+{
+    for(int i= 0;i<3;i++)
+    {
+        niz[i]++;
+
+    }
+    return *this;
+}
+
+
+Vektor Vektor::operator ++()
+{
+    for(int i=0;i<3;i++)
+    {
+        niz[i]++;
+    }
+    return *this;
+}
+
+
+
+Vektor Vektor::operator -()
+{
+    Vektor t=*this;
+    for(int i=0;i<3;i++)
+    {
+        t.niz[i]*= -1;
+    }
+    return t;
+}
+
+
+int & Vektor::operator[](int i)
+{
+    return niz[i];
+}
+
+int main()
+{
+    int a[] = {5,2,3};
+
+
+    Vektor niz(a);
+
+    int b[] = {5,2,3};
+
+    Vektor n(b);
+
+
+    Vektor dodaj = niz.dodaj(n);
+    niz.Ispis();
+
+    cout<<endl;
+
+    Vektor zbir = niz+niz; zbir.Ispis();
+
+
+    cout<<endl;
+    (niz*2).Ispis();
+
+
+    cout<<endl;
+    niz=niz=zbir;
+
+    zbir.Ispis();
+
+    cout<<endl;
+
+    (-niz).Ispis();
+
+    cout<<endl;
+    cout<<niz[2];
+
+    cout<<endl;
+
+}
+
+
+// OVI operatori zapravo sluze da se definisu neke operacije kao sto je naprimer +
+/*
+
+naprimer da bi bilo moguce sabiranja jedne klase sa drugom odnosno elemente jedne klase sa elementima druge klase moze
+se uraditi pomocu operatora
+tako sto se definise operator i znak +  i posle u toj funkciji se napise kod kako zapravo to treba da radi
+gore je navedeno naprimer Da se dobija argument nekog drugog niza iz klase ili tako nesto i posle dole navedes
+jos jednu Klasu i posle ih saberes na nacin preko for petlje i vratis posle taj Vektor v2
+
+
+
+
+*/
 
