@@ -1007,7 +1007,7 @@ p1.pisi();p2.pisi();p3.pisi();
 return 0;
 }
 
-*/
+
 
 
 // PREKLAPANJE OPERATORA
@@ -1117,7 +1117,6 @@ Vektor Vektor::operator ++()
 }
 
 
-
 Vektor Vektor::operator -()
 {
     Vektor t=*this;
@@ -1187,5 +1186,214 @@ jos jednu Klasu i posle ih saberes na nacin preko for petlje i vratis posle taj 
 
 
 
-*/
+// NASLEDIVANJE
 
+
+
+class Datum
+{
+      public:
+      int d,m,g;
+      public:
+      Datum()
+      {       d=1;       m=1;       g=2018;      }
+      Datum(int d,int m,int g)
+      {        this->d=d;        this->m=m;        this->g=g;      }
+      void ispis()
+      {
+           cout<<"Danas je datum "<<d<<"."<<m<<"."<<g<<endl;
+      }
+
+
+    Datum uporedi(Datum dat)
+      {
+            Datum pom; // pomocni datum u kom se cuva razlika ova dva datuma
+            if(d >= dat.d)
+              pom.d = d - dat.d;
+            else
+              {
+                switch(m)
+                {
+                  case 2:case 4:case 6:case 8:case 9:
+                       case 11:case 1: pom.d = 31+d - dat.d;
+                     break;
+                  case 5:case 7:case 10:case 12:
+                       pom.d = 30+d - dat.d;
+                       break;
+                   case 3:
+                   if((g % 4 == 0 && g % 100 != 0) || (g % 400 == 0))
+                   pom.d = 29+d - dat.d;
+                   else
+                   pom.d = 28+d - dat.d;
+                   break;
+                    }
+                    m --;
+                  }
+                    if(m == 0)
+                     {
+                       m = 12;
+                       g --;
+                     }
+                    if(m >= dat.m)
+
+                                        {
+                  pom.m = m - dat.m;
+                }
+                else
+                {
+                  pom.m = 12 + m - dat.m;
+                  g --;
+                }
+                pom.g = g - dat.g;
+      return pom;
+      }
+};
+
+
+class Rodjendan : public Datum
+// posto je Rodjendan nasledila Datum ona samim tim ima atribute d,m,g
+{
+      public:
+      char ime[15];
+      char prezime[20];
+      public:
+      Rodjendan()
+      {        strcpy(ime,"Lazar");
+        strcpy(prezime,"Antonijevic");
+        d = 28;        m = 10;        g = 2003;      }
+      Rodjendan(char *i,char *p,int d,int m,int g)
+      {        strcpy(ime,i);        strcpy(prezime,p);
+       this->d = d;        this->m = m;        this->g = g;
+       }
+
+       bool daLiJe(Datum dat)
+      { // proveravamo da li su dani i meseci isti, godine ne moraju biti iste
+           if(dat.d == d && dat.m == m)
+             return true;
+           return false;
+      }
+      void ispisSlavljenika(Datum dat)
+      {          if(daLiJe(dat) == true)
+             cout<<"Danas je "<<ime<<"u rodjendan. Cestitamo!"<<endl;
+          else
+          {            Datum pom=uporedi(dat);
+            cout<<"Do rodjendana ima jos: "<<pom.d<<" dana i ";
+            cout<<pom.m<<" meseci"<<endl;
+         }
+      }
+
+
+     int godine(Datum dat)
+     {
+         if(daLiJe(dat)==true)
+         {
+             return dat.g - g;
+         }
+         else{
+            if(dat.m > m)
+            {
+                return dat.g - g;
+            }
+            else if(dat.m == m)
+            {
+                if(dat.d > d)
+                {
+                    return dat.g -g;
+                }
+                else
+                {
+                    return dat.g - 1 - g;
+                }
+            }else
+            {
+                return dat.g - 1 - g;
+            }
+
+         }
+     }
+
+};
+      int main()
+      {
+        Rodjendan Lazar;
+        Datum dat(29,5,2023);
+        cout<<"Lazar ima "<<Lazar.godine(dat)<<endl;
+        Lazar.ispisSlavljenika(dat);
+         return 0;
+      }
+
+      // Ovo ko uradi sam svaka mu dala
+
+
+
+
+*/
+
+
+class Kvadar
+{
+protected:
+    int a;
+    int b;
+    int c;
+public:
+    Kvadar()
+    {
+        a =1;
+        b= 1;
+        c= 1;
+
+    }
+
+    Kvadar(int a, int b ,int c)
+    {
+        this->a = a;
+        this->b = b;
+        this->c = c;
+
+    }
+
+    void Ispis()
+    {
+        cout<<"\na:"<<a<<"\nb:"<<b<<"\nc:"<<c<<endl;
+
+    }
+
+
+};
+
+
+
+class Bazen: public Kvadar
+{
+    int d;
+public:
+    Bazen():Kvadar()
+    {
+        d = 5;
+    }
+
+    void Ispis()
+    {
+      cout<<"\na:"<<a<<"\nb:"<<b<<"\nc:"<<c<<"\nDubina:"<<d<<endl;
+    }
+};
+
+
+int main()
+{
+    Bazen b;
+    Kvadar kv,kv1(5,6,7);
+
+    cout<<"Kvadar:";
+    kv.Ispis();
+    cout<<"\nKvadar1:";
+
+
+    kv1.Ispis();
+
+    cout<<"\nBazen1:";
+
+
+    b.Ispis();
+}
