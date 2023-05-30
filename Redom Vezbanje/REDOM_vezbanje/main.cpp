@@ -1327,7 +1327,7 @@ class Rodjendan : public Datum
 
 
 
-*/
+
 
 
 class Kvadar
@@ -1397,3 +1397,249 @@ int main()
 
     b.Ispis();
 }
+*/
+
+
+// VISESTRUKO NASLEDIVANJE
+
+
+/*
+
+
+class Proizvod
+{
+    protected:
+    int barKod;
+    int cena;
+    int kolicina;
+public:
+    Proizvod()
+    {
+        barKod = 111;
+        cena = 500;
+        kolicina = 5;
+    }
+
+    Proizvod(int bk,int c,int k)
+    {
+        barKod = bk;
+        cena=c;
+        kolicina = k;
+    }
+
+    void Ispis()
+    {
+        cout<<"\nBarkod:"<<barKod<<"\nCena:"<<cena<<"\nKolicina:"<<kolicina<<endl;
+    }
+};
+
+
+class Radnik
+{
+    protected:
+    char ime[15];
+    char prezime[20];
+public:
+    Radnik()
+    {
+        strcpy(ime,"Halil");
+        strcpy(prezime,"Sacirovic");
+
+    }
+
+    Radnik(char *i,char *p)
+    {
+        strcpy(ime,i);
+        strcpy(prezime,p);
+
+    }
+
+
+    void Ispis()
+    {
+        cout<<"\nIme:"<<ime<<"\nPrezime:"<<prezime<<endl;
+    }
+};
+
+class Prodavnica :public Radnik,public Proizvod
+{
+public:
+    int brRadnih;
+    int cenaPoSatu;
+public:
+    Prodavnica():Radnik(),Proizvod()
+    {
+        brRadnih = 8;
+        cenaPoSatu = 13;
+    }
+
+    Prodavnica(char *ime,char *prezime,int barKod,int cena,int kolicina,int brS,int cps):Radnik(ime,prezime),Proizvod(barKod,cena,kolicina)
+    {
+        brRadnih = brS;
+        cenaPoSatu= cps;
+    }
+
+    void Ispis()
+    {
+        cout<<"\nBroj radnih sati:"<<brRadnih<<"\nCena Po satu:"<<cenaPoSatu<<endl;
+
+        Proizvod::Ispis();
+        Radnik::Ispis();
+
+    }
+
+    int Plata()
+    {
+        return cenaPoSatu*brRadnih;
+    }
+
+    int Prodaj(int kol)
+    {
+       if(kolicina>kol)
+       {
+
+           kolicina -=kol;
+       }
+       else
+       {
+           cout<<"Nemamo toliko na stanju"<<endl;
+       }
+    }
+};
+
+int main()
+{
+
+    Prodavnica pr1,pr2("Hasan","Hasanovic",123,550,100,8,12);
+
+    pr2.Ispis();
+    pr1.Ispis();
+
+    cout<<"Dnevnica:"<<pr1.Plata()<<endl;
+
+    pr1.Prodaj(2);
+
+    pr1.Ispis();
+
+}
+
+
+
+
+
+class Dosije
+{
+protected:
+    char ime[15];
+    char prezime[20];
+    int index;
+public:
+    Dosije()
+    {
+        strcpy(ime,"Halil");
+        strcpy(prezime,"Sacirovic");
+        index = 2;
+    }
+    Dosije(char *i,char *p,int x)
+    {
+         strcpy(ime,i);
+        strcpy(prezime,p);
+        index = x;
+    }
+    void PredstaviSe()
+    {
+        cout<<"\nIme:"<<ime<<"\nPrezime"<<prezime<<endl;
+    }
+
+
+};
+
+class Predmet
+{
+protected:
+    char imeP[20];
+    char prezimeP[20];
+    char nazivP[20];
+public:
+    Predmet()
+    {
+         strcpy(imeP,"Safet");
+         strcpy(prezimeP,"Purkovic");
+         strcpy(nazivP,"OOP");
+    }
+
+    Predmet(char *ip,char *pp,char *np)
+    {
+         strcpy(imeP,ip);
+         strcpy(prezimeP,pp);
+         strcpy(nazivP,np);
+    }
+
+    void opisPredmeta()
+    {
+        cout<<"\nIme Profesora:"<<imeP<<"\nPrezime Profesora:"<<prezimeP<<"\nNaziv Predmeta"<<nazivP<<endl;
+    }
+
+};
+
+class Ispit:protected Dosije,protected Predmet
+{
+    int ocena;
+    char datum[20];
+
+public:
+    Ispit():Dosije(),Predmet()
+    {
+        ocena =10;
+        strcpy(datum,"16.06.2023");
+    }
+
+    Ispit(char *i,char *p,char x,char *ip,char *pp,char *np,int o,char *d):Dosije(i,p,x),Predmet(ip,pp,np)
+    {
+        ocena = o;
+        strcpy(datum,d);
+    }
+
+    void Ispis()
+    {
+        cout<<"Ocena:"<<ocena<<"\nDatum:"<<datum<<endl;
+
+        Dosije::PredstaviSe();
+        Predmet::opisPredmeta();
+    }
+
+    int jeLiPolozio()
+    {
+        if(ocena > 5)
+        {
+            return 1;
+        }
+        return 0;
+    }
+};
+
+
+int main()
+{
+    Ispit i1,i2("Mujo","Sacirovic",15,"Bratislav","Miric","Programiranje",7,"23.03.2023");
+
+     cout<<"Student 1:"<<endl;
+
+
+    i1.Ispis();
+
+    cout<<i1.jeLiPolozio();
+
+    cout<<"\nStudent 2:"<<endl;
+
+
+
+    i2.Ispis();
+
+    cout<<i2.jeLiPolozio();
+
+}
+
+
+
+*/
