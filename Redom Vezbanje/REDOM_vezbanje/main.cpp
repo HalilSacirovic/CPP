@@ -1642,7 +1642,6 @@ int main()
 
 
 
-*/
 
 
 
@@ -1774,5 +1773,173 @@ int main() {
     return 0;
 }
 
+
+
+
+
+class Artikal
+{
+    char naziv[20];
+    double cena;
+    int popust;
+
+public:
+    Artikal()
+    {
+        strcpy(naziv,"Voda");
+        cena = 80.0;
+        popust = 0;
+    }
+    Artikal(char *n,double c,int p)
+    {
+        strcpy(naziv,n);
+        cena = c;
+        popust =p;
+    }
+
+    double Cena_sa_Popustom()
+    {
+       double Cena_sa_popustom = cena*popust/100.0;
+
+       return cena- Cena_sa_popustom;
+           }
+
+    void Ispis()
+    {
+        cout<<"\nNaziv:"<<naziv<<"\nCena:"<<cena<<"\nPopust:"<<popust<<endl;
+    }
+};
+class Stavka
+{
+
+
+};
+
+
+
+int main()
+{
+    Artikal a1,a2("Surutka",250.0,20);
+cout<<"Cena sa popustom"<<a1.Cena_sa_Popustom();
+    a1.Ispis();
+
+    a2.Ispis();
+  cout<<"Cena sa popustom"<<a2.Cena_sa_Popustom();
+}
+
+
+
+
+*/
+
+class Artikal
+{
+    string naziv;
+    double cena;
+    int popust;
+public:
+    Artikal(string n,double c,int p=0)
+    {
+        naziv = n;
+        cena = c;
+        popust = p;
+    }
+
+    Artikal()
+    {
+        naziv = "Voda";
+        cena = 70.0;
+        popust = 0;
+    }
+
+    void Ispis()
+    {
+        cout<<"\nNaziv ="<<naziv<<"\nCena = "<<cena<<"\n"<<Popust()<<endl;
+    }
+
+    bool imaLiPopust()
+    {
+        if(popust>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    string getNaziv(){return naziv;}
+    double getCena(){return cena;}
+
+
+    double Popust()
+    {
+        if(imaLiPopust())
+        {
+            cout<<"Popust Iznosi:"<<popust<<"\nCena sa popustom: ";
+            return cena-cena*popust/100.0;
+        }
+        else
+        {
+            cout<<"Trenutno nema nikakav Popust"<<endl;
+            return 0;
+        }
+    }
+
+    double getCenaPopust(){return cena-cena*popust/100.0;}
+
+
+};
+
+
+
+class Stavka
+{
+    Artikal artikal;
+    int kolicina;
+    static int redni_Broj_Inc;
+    int redni_Broj;
+
+public:
+    Stavka(const Artikal &ar,int kol)
+    {
+        artikal = ar;
+        kolicina = kol;
+        redni_Broj = redni_Broj_Inc++;
+    }
+
+    int getredniBroj(){return redni_Broj;}
+
+    int getIznos(){return kolicina * artikal.getCenaPopust();}
+
+    void Ispis()
+    {
+        cout<<"Stavka:"<<redni_Broj<<"\nArtikal:"<<artikal.getNaziv()<<"\nIznos stavke:"<<getIznos()<<endl;
+    }
+
+};
+int Stavka::redni_Broj_Inc = 1;
+
+
+int main()
+{
+    Artikal a1,a2("Sok",140.0,10);
+
+    Stavka s1(a2,5),s2(a1,10);
+    a1.Ispis();
+
+    a2.Ispis();
+
+    cout<<"\nStavka:1\n"<<endl;
+
+    s1.Ispis();
+
+     cout<<"\nStavka:2\n"<<endl;
+
+    s2.Ispis();
+
+
+}
 
 
