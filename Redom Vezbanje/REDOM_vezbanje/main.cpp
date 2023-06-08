@@ -1942,7 +1942,6 @@ int main()
 }
 
 
-*/
 
 
 
@@ -2057,4 +2056,54 @@ int main()
 
 
     p1.Pisi();
+}
+*/
+
+
+
+enum Zanr{POP,ROK,REP};
+
+
+
+class Test
+{
+    Zanr zanr;
+
+public:
+
+    Test(Zanr z)
+    {
+        zanr = z;
+    }
+    string NadjiZanr(Zanr zanr)
+    {
+        if(zanr == 0)
+        {
+            return "POP";
+        }
+        else if(zanr == 1)
+        {
+            return "ROK";
+        }
+        else if(zanr ==2)
+        {
+            return "REP";
+        }
+        else{
+            return "Netacan unos";
+        }
+    }
+
+
+
+    void Ispis()
+    {
+        cout<<"Zanr:"<<NadjiZanr(zanr);
+    }
+};
+
+int main()
+{
+    Test t1(REP);
+    t1.Ispis();
 }
