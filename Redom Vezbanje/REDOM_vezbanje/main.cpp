@@ -1830,7 +1830,7 @@ cout<<"Cena sa popustom"<<a1.Cena_sa_Popustom();
 
 
 
-*/
+
 
 class Artikal
 {
@@ -1921,7 +1921,6 @@ public:
 };
 int Stavka::redni_Broj_Inc = 1;
 
-
 int main()
 {
     Artikal a1,a2("Sok",140.0,10);
@@ -1943,3 +1942,119 @@ int main()
 }
 
 
+*/
+
+
+
+enum Zanr{POP,REP,ROK};
+
+class Izvodjac
+{
+
+    string ime;
+    Zanr zanr;
+
+public:
+    string NadjiZanr(Zanr zanr)
+    {
+        switch(zanr)
+        {
+            case 0:return "POP";break;
+            case 1:return "REP";break;
+            case 2:return "ROK";break;
+            default: return "NETACAN UNOS";break;
+        }
+    }
+    Izvodjac(string naziv,Zanr z)
+    {
+        ime=naziv;
+        zanr = z;
+    }
+
+    Izvodjac()
+    {
+        ime = "Tito";
+        zanr = REP;
+    }
+
+    Zanr getZanr()const{return zanr;}
+
+    void Ispis()
+    {
+        cout<<"\nIme:"<<ime<<"\nZanr:"<<NadjiZanr(zanr)<<endl;
+    }
+
+
+
+};
+
+class Pesma
+{
+  string naziv;
+  int minut,sek;
+  int br,kap;
+  Izvodjac *izv;
+public:
+    Pesma(string n,int m,int s,int k)
+    {
+        naziv = n;
+        minut = m;
+        sek = s;
+        kap =k;
+        izv = new Izvodjac[kap];
+        br = 0;
+    }
+
+    int getMinut(){return minut;}
+    int getSek(){return sek;}
+
+    void dodaj(Izvodjac *i)
+    {
+        if(br<kap)
+        {
+            izv[br++] = *i;
+        }
+    }
+
+    friend bool Duza(const Pesma &p1,const Pesma &p2)
+    {
+
+        if((p2.minut == p1.minut && p2.sek >p1.sek) || p2.minut > p1.minut)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+
+        {
+
+        }
+    }
+
+    void Pisi()
+    {
+    cout << "P(" << naziv << " - "<< minut << ":" << sek << ")" << endl;
+    cout << "Izvodjaci: ";
+    for (int i = 0; i < br; i++)
+    izv[i].Ispis();
+     }
+
+};
+
+
+int main()
+{
+    Izvodjac iz1("Micko",ROK),iz2;
+
+
+    Pesma p1("Pesma1",2,55,3),p2("Pesma2",3,5,2);
+
+    iz1.Ispis();
+    p1.dodaj(&iz2);
+
+    p1.dodaj(&iz1);
+
+
+    p1.Pisi();
+}
