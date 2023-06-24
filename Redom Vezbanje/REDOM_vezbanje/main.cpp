@@ -2057,7 +2057,7 @@ int main()
 
     p1.Pisi();
 }
-*/
+
 
 
 
@@ -2106,4 +2106,119 @@ int main()
 {
     Test t1(REP);
     t1.Ispis();
+}
+
+
+
+
+class Vektor
+{
+    int niz[3];
+
+public:
+    Vektor(const int a[])
+    {
+        for(int i=0;i<3;i++)
+        {
+            niz[i] = a[i];
+        }
+    }
+
+    void setX(int x){niz[0] = x;}
+    void setY(int y){niz[1]=y;}
+    void setZ(int z){niz[2]= z;}
+
+    int getX(){return niz[0];}
+
+    int getY(){return niz[1];}
+
+    int getZ(){return niz[2];}
+
+
+    void Ispis()
+    {
+        cout<<"\nx:"<<niz[0]<<"\ny:"<<niz[1]<<"\nz:"<<niz[2]<<endl;
+    }
+
+    Vektor dodaj(Vektor v)
+    {
+
+    }
+
+    Vektor operator +(Vektor v)
+    {
+        Vektor v2 = *this;
+        for(int i=0;i<3;i++)
+        {
+            v2.niz[i] += v.niz[i]
+        }
+
+        return v2;
+    }
+
+    Vektor operator *(int k)
+    {
+        Vektor v2 = *this;
+        for(int i=0;i<3;i++)
+        {
+            v2.niz[i] *=k;
+        }
+
+        return v2;
+    }
+
+    Vektor operator =(Vektor v)
+    {
+        Vektor v2 =
+    }
+
+    Vektor operator ++(Vektor v)
+    {
+
+    }
+};*/
+
+
+
+class Vocka {
+private:
+    std::string naziv;
+    double godisnjiPrihod;
+    int zivotniVek;
+    int trenutnaStarost;
+
+public:
+    Vocka(std::string naziv, double godisnjiPrihod, int zivotniVek)
+        : naziv(naziv), godisnjiPrihod(godisnjiPrihod), zivotniVek(zivotniVek), trenutnaStarost(0) {}
+
+    double getGodisnjiPrihod() const {
+        return godisnjiPrihod;
+    }
+
+    int getPreostaleGodine() const {
+        return zivotniVek - trenutnaStarost;
+    }
+
+    void operator++(int) {
+        trenutnaStarost++;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Vocka& vocka) {
+        os << vocka.naziv << "(" << vocka.trenutnaStarost << "/" << vocka.zivotniVek << "):" << vocka.godisnjiPrihod<<vocka.getPreostaleGodine();
+        return os;
+    }
+};
+
+int main() {
+    std::string naziv = "Jabuka";
+    double godisnjiPrihod = 1000.0;
+    int zivotniVek = 10;
+
+    Vocka vocka(naziv, godisnjiPrihod, zivotniVek);
+    std::cout << vocka << std::endl;
+
+    vocka++;
+    std::cout << vocka << std::endl;
+
+    return 0;
 }
