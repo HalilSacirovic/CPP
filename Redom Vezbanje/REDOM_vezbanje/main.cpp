@@ -2176,7 +2176,7 @@ public:
     {
 
     }
-};*/
+};
 
 
 
@@ -2222,3 +2222,50 @@ int main() {
 
     return 0;
 }
+*/
+
+
+
+class Nalepnica {
+private:
+    static int brojac; // staticki član klase za generisanje jedinstvenog identifikatora
+    int identifikator;
+    string naziv;
+
+public:
+    // Konstruktor
+    Nalepnica(const string& naziv) : identifikator(brojac++), naziv(naziv) {}
+
+    // Konstruktor kopije
+    Nalepnica(const Nalepnica& other) : identifikator(brojac++), naziv(other.naziv) {}
+
+    // Metoda za ispis
+    void ispisi() const {
+        std::cout << "Identifikator: " << identifikator << ", Naziv: " << naziv << std::endl;
+    }
+};
+
+int Nalepnica::brojac = 0; // Inicijalizacija statickog clana klase
+
+int main() {
+    // Kreiranje objekta Nalepnica
+    string naziv;
+    cout << "Unesite naziv nalepnice: ";
+    getline(cin, naziv);
+
+    Nalepnica nalepnica1(naziv);
+
+    // Ispis objekta
+    nalepnica1.ispisi();
+
+    // Kopiranje objekta
+    Nalepnica nalepnica2 = nalepnica1;
+
+    // Ispis kopiranog objekta
+    nalepnica2.ispisi();
+
+     Nalepnica nalepnica3("Voda");
+    nalepnica3.ispisi();
+
+    return 0;
+}
